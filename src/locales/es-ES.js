@@ -4,7 +4,7 @@ import menu from './es-ES/menu';
 import pwa from './es-ES/pwa';
 import register from './es-ES/register';
 import accountSettings from './es-ES/accountSettings';
-import settingDrawer from './es-Es/settingDrawer';
+import settingDrawer from './es-ES/settingDrawer';
 import settings from './es-ES/settings';
 import outComming from './es-ES/outComming';
 import shippingMaster from './es-ES/shippingMaster';
