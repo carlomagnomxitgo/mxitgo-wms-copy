@@ -1,0 +1,20 @@
+export default {
+    'request.error.200':'Ok',
+    'request.error.201':'Los datos nuevos o modificados son correctos.',
+    'request.error.202':'Se ha puesto en cola una solicitud en segundo plano (tarea asincrónica).',
+    'request.error.204':'Los datos fueron borrados exitosamente',
+    'request.error.400':'Hubo un error en la solicitud emitida y el servidor no creó ni modificó los datos.',
+    'request.error.401':'El usuario no tiene los permisos requeridos (token, user name, wrong password).',
+    'request.error.403':'El usuario está autorizado, pero el acceso está prohibido.',
+    'request.error.404':'La solicitud emitida fue por un registro inexistente y el servidor no funcionó.',
+    'request.error.406':'El formato solicitado no está disponible.',
+    'request.error.410':'El recurso solicitado se eliminó de forma permanente y ya no estará disponible.',
+    'request.error.422':'Al crear un objeto, se produjo un error de validación.',
+    'request.error.500':'Ocurrió un error en el servidor',
+    'request.error.502':'Error de red',
+    'request.error.503':'El servicio no está disponible',
+    'request.error.504':'Tiempo de espera agotado',
+    'request.error.notification.title':"Solicitud de error",
+    'request.error.notification.description':'Su red es anormal y no puede conectarse al servidor',
+    'request.error.notification.message':'Anomalía de la red'
+}
