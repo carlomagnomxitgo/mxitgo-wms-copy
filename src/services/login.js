@@ -18,5 +18,6 @@ export async function getDataUserByEmail(email) {
             'Access-Control-Allow-Origin':"'*'"
 
         },
+        mode: 'no-cors'
     });
 }
