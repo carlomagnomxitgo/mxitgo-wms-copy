@@ -15,7 +15,7 @@ export async function getDataUserByEmail(email) {
         headers: {
             'Authorization': email.Authorization,
             'content-type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': "'*'",
             'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
         }
     });
