@@ -12,6 +12,6 @@ export async function getFakeCaptcha(mobile) {
 export async function getDataUserByEmail(email) {
     return request(`${ANT_DESIGN_PRO_TARGET}/user/email?email=${email.email}`, {
         method: 'GET',
-        headers: { 'Authorization': email.Authorization },
+        // headers: { 'Authorization': email.Authorization },
     });
 }
