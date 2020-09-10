@@ -76,7 +76,7 @@ export async function queryFakeList(params) {
 }
 
 export async function fakeAccountLogin(params) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/User/login`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/user/login`, {
         method: 'POST',
         body: JSON.stringify(params),
     });
