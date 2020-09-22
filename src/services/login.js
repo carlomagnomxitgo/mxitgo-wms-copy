@@ -16,7 +16,8 @@ export async function getDataUserByEmail(email) {
             'Authorization': email.Authorization,
             "Access-Control-Allow-Origin": "'*'",
             "Access-Control-Allow-Headers": "'X-Forwarded-For'",
-            "Access-Control-Allow-Methods": "'OPTIONS,POST,GET,PUT,DELETE'"
+            "Access-Control-Allow-Methods": "'OPTIONS,POST,GET,PUT,DELETE'",
+            "x-api-key":"qvWmpGYLQl6KNPdJqz40SavJ7EjyFPqy8CG4rz71"
         
         },
     });
