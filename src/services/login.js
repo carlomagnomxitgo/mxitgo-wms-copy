@@ -13,7 +13,7 @@ export async function getDataUserByEmail(email) {
     return request(`${ANT_DESIGN_PRO_TARGET}/user/email?email=${email.email}`, {
         method: 'GET',
         headers: {
-            "Access-Control-Allow-Origin": "https://master.d33oxsmkbrwh67.amplifyapp.com/",
+            "Access-Control-Allow-Origin": "https://master.d33oxsmkbrwh67.amplifyapp.com",
             'Content-Type': 'application/json',
             "Access-Control-Allow-Headers": "X-Forwarded-For",
             'x-api-key': 'qvWmpGYLQl6KNPdJqz40SavJ7EjyFPqy8CG4rz71'
