@@ -17,7 +17,7 @@ export async function getDataUserByEmail(email) {
             'Access-Control-Allow-Origin': 'https://master.d33oxsmkbrwh67.amplifyapp.com',
             'Access-Control-Allow-Headers': 'X-Forwarded-For',
             'x-api-key': 'qvWmpGYLQl6KNPdJqz40SavJ7EjyFPqy8CG4rz71',
-            'Access-Control-Allow-Methods': 'OPTIONS,GET',
+            'Access-Control-Allow-Methods': 'GET,OPTIONS',
           }
         // headers: { 
         //     // 'Authorization': email.Authorization,
