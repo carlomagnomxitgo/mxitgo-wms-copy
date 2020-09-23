@@ -12,13 +12,19 @@ export async function getFakeCaptcha(mobile) {
 export async function getDataUserByEmail(email) {
     return request(`${ANT_DESIGN_PRO_TARGET}/user/email?email=${email.email}`, {
         method: 'GET',
-        headers: { 
-            'Authorization': email.Authorization,
-            "Access-Control-Allow-Origin": "'*'",
-            "Access-Control-Allow-Headers": "'X-Forwarded-For'",
-            "Access-Control-Allow-Methods": "'OPTIONS,POST,GET,PUT,DELETE'",
-            "x-api-key":"qvWmpGYLQl6KNPdJqz40SavJ7EjyFPqy8CG4rz71"
+        headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': 'qvWmpGYLQl6KNPdJqz40SavJ7EjyFPqy8CG4rz71'
+          }
+        // headers: { 
+        //     // 'Authorization': email.Authorization,
+        //     // "Access-Control-Allow-Origin": "*",
+        //     // "Access-Control-Allow-Headers": "X-Forwarded-For",
+        //     // "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT,DELETE",
+        //     "x-api-key":"qvWmpGYLQl6KNPdJqz40SavJ7EjyFPqy8CG4rz71"
         
-        },
+        // },
     });
 }
+
+
