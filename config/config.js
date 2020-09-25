@@ -175,6 +175,7 @@ export default {
         // ANT_DESIGN_PRO_TARGET: 'https://9j8ucg1yhj.execute-api.us-east-1.amazonaws.com/desarrollo'
         ANT_DESIGN_PRO_USER_POOL_ID: 'us-east-1_9WJ8uxbk9',
         ANT_DESIGN_PRO_CLIENT_ID: '66vntbnp4mpgn1o1p50pqd43kl',
+        API_KEY:'qvWmpGYLQl6KNPdJqz40SavJ7EjyFPqy8CG4rz71'
         // ANT_DESIGN_PRO_TARGET: '/api',
     },
     ignoreMomentLocale: true,
