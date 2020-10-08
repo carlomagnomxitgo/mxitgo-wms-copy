@@ -71,22 +71,22 @@ export default {
     // umi routes: https://umijs.org/zh/guide/router.html
     routes: [
         
-        // {
-        //     path: '/user',
-        //     component: '../layouts/UserLayout',
-        //     routes: [{
-        //             name: 'login',
-        //             path: '/user/login',
-        //             component: './user/login',
-        //         },
-        //         {
-        //             name: 'register',
-        //             icon: 'smile',
-        //             path: '/user/register',
-        //             component: './user/register',
-        //         },
-        //     ],
-        // },
+        {
+            path: '/user',
+            component: '../layouts/UserLayout',
+            routes: [{
+                    name: 'login',
+                    path: '/user/login',
+                    component: './user/login',
+                },
+                {
+                    name: 'register',
+                    icon: 'smile',
+                    path: '/user/register',
+                    component: './user/register',
+                },
+            ],
+        },
         {
             path: '/',
             component: '../layouts/SecurityLayout',
