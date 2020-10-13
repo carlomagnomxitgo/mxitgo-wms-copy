@@ -1,13 +1,14 @@
 import request from '@/utils/request';
 
 export async function query() {
-    return request('/api/users');
+    return request(`${ANT_DESIGN_PRO_TARGET}/users`);
 }
 export async function queryCurrent() {
-    return request('/api/currentUser');
+    return request(`${ANT_DESIGN_PRO_TARGET}/currentUser`);
+
 }
 export async function queryNotices() {
-    return request('/api/notices');
+    return  request(`${ANT_DESIGN_PRO_TARGET}/notices`);
 }
 
 export async function getDataUserByEmail({ email }) {
