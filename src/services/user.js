@@ -4,7 +4,6 @@ export async function query() {
     return request(`${ANT_DESIGN_PRO_TARGET}/users`, {
         method: 'GET',
         headers: {
-            'Authorization': email.Authorization,
             'Content-Type': 'application/json',
             'x-api-key': API_KEY,
         },
@@ -14,7 +13,6 @@ export async function queryCurrent() {
     return request(`${ANT_DESIGN_PRO_TARGET}/currentUser`, {
         method: 'GET',
         headers: {
-            'Authorization': email.Authorization,
             'Content-Type': 'application/json',
             'x-api-key': API_KEY,
         },
@@ -25,7 +23,6 @@ export async function queryNotices() {
     return request(`${ANT_DESIGN_PRO_TARGET}/notices`, {
         method: 'GET',
         headers: {
-            'Authorization': email.Authorization,
             'Content-Type': 'application/json',
             'x-api-key': API_KEY,
         },
