@@ -35,14 +35,14 @@ class GeneralProgramming extends PureComponent {
         editSumBoxes: false,
     }
     componentDidMount() {
-        // this.props.dispatch({
-        //    type: 'programming/fetchProgrammingAll',
-        //    payload: {
-        //        payload: {
-        //         Authorization: sessionStorage.getItem('idToken')
-        //        }
-        //     },
-        // });
+        this.props.dispatch({
+           type: 'programming/fetchProgrammingAll',
+           payload: {
+               payload: {
+                Authorization: sessionStorage.getItem('idToken')
+               }
+            },
+        });
         this.props.dispatch({
             type: 'programming/fetchProductAll',
             payload: {
