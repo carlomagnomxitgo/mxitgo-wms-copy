@@ -553,7 +553,8 @@ export async function getShippingDetail(payload) {
 }
 
 export async function getLocations(payload) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/location/all?payload=${JSON.stringify(payload)}`, {
+    // return request(`${ANT_DESIGN_PRO_TARGET}/location/all?payload=${JSON.stringify(payload)}`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/location/all`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
