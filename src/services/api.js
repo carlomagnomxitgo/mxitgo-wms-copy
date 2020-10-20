@@ -567,7 +567,8 @@ export async function getLocations(payload) {
 }
 
 export async function getOutcomming(payload) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/outcomming?payload=${JSON.stringify(payload)}`, {
+    // return request(`${ANT_DESIGN_PRO_TARGET}/outcomming?payload=${JSON.stringify(payload)}`, {
+        return request(`${ANT_DESIGN_PRO_TARGET}/outcomming`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
@@ -580,7 +581,7 @@ export async function getOutcomming(payload) {
 
 export async function getProgramming({ payload }) {
     return request(
-        `${ANT_DESIGN_PRO_TARGET}/programming?payload=${JSON.stringify(payload)}`, {
+        `${ANT_DESIGN_PRO_TARGET}/programming`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization },
         headers: {
