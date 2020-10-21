@@ -589,6 +589,8 @@ export async function getProgramming({ payload }) {
             'Content-Type': 'application/json',
             'x-api-key': API_KEY,
         },
+        body: JSON.stringify(payload)
+
     });
 }
 
