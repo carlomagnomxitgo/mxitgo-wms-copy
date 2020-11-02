@@ -581,15 +581,15 @@ export async function getOutcomming(payload) {
 
 export async function getProgramming({ payload }) {
     return request(
-        `${ANT_DESIGN_PRO_TARGET}/programming`, {
+        `${ANT_DESIGN_PRO_TARGET}/programming?payload=${JSON.stringify(payload)}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization },
         headers: {
             'Authorization': payload.Authorization,
             'Content-Type': 'application/json',
             'x-api-key': API_KEY,
-        },
-        body: JSON.stringify(payload)
+        }
+        // body: JSON.stringify(payload)
     });
 }
 

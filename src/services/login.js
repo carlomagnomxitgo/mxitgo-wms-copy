@@ -15,9 +15,6 @@ export async function getDataUserByEmail(email) {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': email.Authorization,
-            // "Access-Control-Allow-Headers": "Content-Type",
-            // "Access-Control-Allow-Origin": "https://master.d33oxsmkbrwh67.amplifyapp.com",
-            // "Access-Control-Allow-Methods": "OPTIONS,GET",
             'x-api-key': API_KEY
         }
         // headers: { 
