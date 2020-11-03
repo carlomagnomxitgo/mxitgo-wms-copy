@@ -301,7 +301,7 @@ export async function getStats({ payload }) {
 }
 export async function getComments({ payload }) {
     console.log('Payload ' + payload);
-    return request(`${ANT_DESIGN_PRO_TARGET}/user/comments/?payload=${JSON.stringify(payload)}`);
+    return request(`${ANT_DESIGN_PRO_TARGET}/user/comments/?payload=${encodeURI(JSON.stringify(payload))}`);
 }
 
 export async function generateCompany(params) {
@@ -465,7 +465,7 @@ export async function confirmOutcomming(payload) {
 }
 
 export async function getShippingsByEntry(payload) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/outcomming/assigment?payload=${JSON.stringify(payload)}`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/outcomming/assigment?payload=${encodeURI(JSON.stringify(payload))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
@@ -477,7 +477,7 @@ export async function getShippingsByEntry(payload) {
 }
 
 export async function getComposition(payload) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/outcommings/composition?payload=${JSON.stringify(payload)}`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/outcommings/composition?payload=${encodeURI(JSON.stringify(payload))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
@@ -489,7 +489,7 @@ export async function getComposition(payload) {
 }
 
 export async function customerGet(payload) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/customer?payload=${JSON.stringify(payload)}`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/customer?payload=${encodeURI(JSON.stringify(payload))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
@@ -527,7 +527,7 @@ export async function confirmShipping({ payload }) {
 }
 
 export async function getShipping(payload) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/shipping?payload=${JSON.stringify(payload)}`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/shipping?payload=${encodeURI(JSON.stringify(payload))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
@@ -540,7 +540,7 @@ export async function getShipping(payload) {
 }
 
 export async function getShippingDetail(payload) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/shipping/detail?payload=${JSON.stringify(payload)}`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/shipping/detail?payload=${encodeURI(JSON.stringify(payload))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
@@ -554,7 +554,7 @@ export async function getShippingDetail(payload) {
 
 export async function getLocations(payload) {
     // return request(`${ANT_DESIGN_PRO_TARGET}/location/all?payload=${JSON.stringify(payload)}`, {
-    return request(`${ANT_DESIGN_PRO_TARGET}/location/all`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/location/all?payload=${encodeURI(JSON.stringify(payload))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
@@ -567,7 +567,7 @@ export async function getLocations(payload) {
 }
 
 export async function getOutcomming(payload) {
-    // return request(`${ANT_DESIGN_PRO_TARGET}/outcomming?payload=${JSON.stringify(payload)}`, {
+    // return request(`${ANT_DESIGN_PRO_TARGET}/outcomming?payload=${encodeURI(JSON.stringify(payload))}`, {
         return request(`${ANT_DESIGN_PRO_TARGET}/outcomming`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
@@ -645,7 +645,7 @@ export async function postProgramming({ payload }) {
 
 
 export async function getWeekProgrammingTotals(payload) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/dashboard/weekFigures?payload=${JSON.stringify(payload)}`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/dashboard/weekFigures?payload=${encodeURI(JSON.stringify(payload))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
@@ -658,7 +658,7 @@ export async function getWeekProgrammingTotals(payload) {
 }
 
 export async function dashboardGetMasterTotal(payload) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/dashboard/total?payload=${JSON.stringify(payload)}`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/dashboard/total?payload=${encodeURI(JSON.stringify(payload))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
@@ -685,7 +685,7 @@ export async function postOutcomming({ payload }) {
 }
 
 export async function getDay(payload) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/dashboard/day?payload=${JSON.stringify(payload)}`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/dashboard/day?payload=${encodeURI(JSON.stringify(payload))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
@@ -748,7 +748,7 @@ export async function deleteShipping({ payload }) {
 }
 
 export async function getOutcommingsByEntry(payload) {
-    return request(`${ANT_DESIGN_PRO_TARGET}/outcomming/byEntry?payload=${JSON.stringify(payload)}`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/outcomming/byEntry?payload=${encodeURI(JSON.stringify(payload))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
