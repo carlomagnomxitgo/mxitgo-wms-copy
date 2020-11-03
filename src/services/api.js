@@ -568,7 +568,7 @@ export async function getLocations(payload) {
 
 export async function getOutcomming(payload) {
     // return request(`${ANT_DESIGN_PRO_TARGET}/outcomming?payload=${encodeURI(JSON.stringify(payload))}`, {
-        return request(`${ANT_DESIGN_PRO_TARGET}/outcomming`, {
+        return request(`${ANT_DESIGN_PRO_TARGET}/outcomming?payload=${encodeURI(JSON.stringify(payload))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.Authorization }
         headers: {
@@ -698,7 +698,7 @@ export async function getDay(payload) {
 
 export async function fetchShippingAll({ payload }) {
     console.log(payload)
-    return request(`${ANT_DESIGN_PRO_TARGET}/shipping/all?payload=${JSON.stringify(payload.POST)}`, {
+    return request(`${ANT_DESIGN_PRO_TARGET}/shipping/all?payload=${encodeURI(JSON.stringify(payload.POST))}`, {
         method: 'GET',
         // headers: { 'Authorization': payload.POST.Authorization },
         headers: {
