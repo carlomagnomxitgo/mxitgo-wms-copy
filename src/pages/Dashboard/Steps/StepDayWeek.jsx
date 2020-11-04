@@ -31,15 +31,15 @@ class StepDayWeek extends PureComponent {
                             </div>
                             <Progress percent={dataPerDay.plannedPercentage} successPercent={dataPerDay.confirmedPercentage} showInfo={false} />
                             <div style={{display:"flex"}}>
-                                <div> <i> Planeados:</i></div>
+                                <div> <i> <FormattedMessage id='dashboard.text.planned'/></i></div>
                                 <div style={{textAlign:"right",flexGrow:4}} ><b>{dataPerDay.planned}</b></div>
                             </div>
                             <div style={{display:"flex"}}>
-                              <div><i>Confirmados:</i> </div>
+                              <div><i><FormattedMessage id='dashboard.text.confirmed'/></i> </div>
                               <div style={{textAlign:"right",flexGrow:4}}><b>{dataPerDay.confirmed}</b></div>
                             </div>
                             <div style={{display:"flex"}}>
-                              <div><i> Cancelados:</i></div>
+                              <div><i> <FormattedMessage id='dashboard.text.canceled'/></i></div>
                               <div style={{textAlign:"right",flexGrow:4}}><b>{dataPerDay.cancelled}</b></div>
                             </div>
                             

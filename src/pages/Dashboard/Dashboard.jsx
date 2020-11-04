@@ -201,16 +201,16 @@ export default class Dashboard extends PureComponent {
           
           <Row type="flex" justify="center" align-content="center">
               <Col xs={12} sm={12} md={6} lg={9} xl={9} style={{textAlign: "center"}}>
-                <Statistic title="Necesidad Gold" value={dashboard.programmingTotalPRODUCT1} prefix={<Icon type="layout" theme="twoTone" twoToneColor="#ffd700" />} />
+                <Statistic title={<FormattedMessage id='dashboard.text.gold-necessity'/>} value={dashboard.programmingTotalPRODUCT1} prefix={<Icon type="layout" theme="twoTone" twoToneColor="#ffd700" />} />
               </Col>
               
               <Col xs={12} sm={12} md={6} lg={9} xl={9} style={{textAlign: "center"}}>
-                <Statistic title="Necesidad Premium" value={dashboard.programmingTotalPRODUCT2} prefix={<Icon type="layout" theme="twoTone" twoToneColor="#7fc07b" />} />
+                <Statistic title={<FormattedMessage id='dashboard.text.premium-necessity'/>} value={dashboard.programmingTotalPRODUCT2} prefix={<Icon type="layout" theme="twoTone" twoToneColor="#7fc07b" />} />
               </Col>
               
 
               <Col xs={18} sm={18} md={6} lg={4} xl={4} style={{textAlign: "center", padding:"0rem 0rem 0rem 2rem"}}>
-                  <Statistic title="Total Necesidades" value={dashboard.programmingTotal.programmingTotal}/>
+                  <Statistic title={<FormattedMessage id='dashboard.text.total-necessity'/>} value={dashboard.programmingTotal.programmingTotal}/>
               </Col>
 
               <Col xs={6} sm={6} md={6} lg={2} xl={2} style={{textAlign: "left"}}>
