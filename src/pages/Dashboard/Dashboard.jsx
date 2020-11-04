@@ -7,7 +7,7 @@ import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import SelectProduct from '../generalComponents/SelectProduct';
 import { Row, Col, Card, Tooltip, Typography, Progress, Form, DatePicker, Statistic,Icon, Spin, notification} from 'antd';
 import { isMobile, isTablet } from "react-device-detect";
-import { formatMessage } from 'umi-plugin-react/locale';
+import { formatMessage, FormattedMessage} from 'umi-plugin-react/locale';
 import  StepsDashBoard from './Steps/StepsDashBoard';
 import 'moment/locale/en-au';
 import GridDashboard from './GridDashboard';
