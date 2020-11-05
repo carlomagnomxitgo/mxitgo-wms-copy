@@ -130,7 +130,7 @@ class AvatarDropdown extends React.Component {
         </Menu.Item>
       </Menu>
     );
-    const userSimplify = userByEmail.split(" ")[0].substr(0, 1) + "" + userByEmail.split(" ")[1].substr(0, 1);
+    const userSimplify = userByEmail ? (userByEmail.name.split(" ")[0].substr(0, 1) + "" + userByEmail.name.split(" ")[1].substr(0, 1)) : "";
     return userByEmail && userByEmail.name ? (
       <HeaderDropdown overlay={menuHeaderDropdown}>
         <span className={`${styles.action} ${styles.account}`}>
