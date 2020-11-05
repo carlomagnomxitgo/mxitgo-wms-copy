@@ -9,7 +9,7 @@ export default class AvatarAccount extends PureComponent {
                 {/* <Avatar size={200} src={this.props.dataImagen}>
                     {"user"}
                 </Avatar> */}
-                {this.props.nameUser ?
+                {/* {this.props.nameUser ? */}
                     <Avatar
                         size={200}
                         style={{
@@ -18,7 +18,7 @@ export default class AvatarAccount extends PureComponent {
                     >
                         {this.props.dataImagen}
                     </Avatar>
-                    :
+                    {/* :
 
                     <Avatar
                         size={200}
@@ -26,7 +26,7 @@ export default class AvatarAccount extends PureComponent {
                     >
                     </Avatar>
 
-                }
+                } */}
 
             </div>
         );

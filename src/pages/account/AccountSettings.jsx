@@ -202,15 +202,16 @@ class AccountSettings extends PureComponent {
                         <Form {...formItemLayout} onSubmit={this.handleSubmit}>
                             <Row>
                                 <Col lg={12} xl={24} className={Styles.avatar}>
-                                    {
+                                    {/* {
                                         avatarUser != undefined
                                             ? <div>
                                                 <Upload changeImagen={this.handleChange} customRequest={this.dummyRequest} stateImage={avatarUser.urlImage} />
                                                 {localStorage.setItem("url", this.props.avatarUser.urlImage)}
                                             </div>
-                                            : <Upload changeImagen={this.handleChange} customRequest={this.dummyRequest} stateImage={""} />
+                                            :  */}
+                                    <Upload changeImagen={this.handleChange} customRequest={this.dummyRequest} stateImage={false} stateName={"U"} />
 
-                                    }
+                                    {/* } */}
                                 </Col>
                             </Row>
                             <Divider />
