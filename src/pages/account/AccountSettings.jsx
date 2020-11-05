@@ -128,6 +128,8 @@ class AccountSettings extends PureComponent {
 
     }
     dummyRequest = ({ file, onSuccess }) => {
+
+        console.log("step fake")
         setTimeout(() => {
             onSuccess("ok");
         }, 0);
