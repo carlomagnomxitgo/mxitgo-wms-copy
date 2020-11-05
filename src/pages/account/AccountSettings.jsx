@@ -127,7 +127,11 @@ class AccountSettings extends PureComponent {
         console.log("step 5")
 
     }
-
+    dummyRequest = ({ file, onSuccess }) => {
+        setTimeout(() => {
+            onSuccess("ok");
+        }, 0);
+    };
     handleChange = info => {
         console.log("step 1")
         console.log(info)
@@ -199,7 +203,7 @@ class AccountSettings extends PureComponent {
                                     {
                                         avatarUser != undefined
                                             ? <div>
-                                                <Upload changeImagen={this.handleChange} stateImage={avatarUser.urlImage} />
+                                                <Upload changeImagen={this.handleChange} customRequest={this.dummyRequest} stateImage={avatarUser.urlImage} />
                                                 {localStorage.setItem("url", this.props.avatarUser.urlImage)}
                                             </div>
                                             : <Upload changeImagen={this.handleChange} stateImage={"https://elsignificadode.com/wp-content/uploads/blanco.jpg"} />
