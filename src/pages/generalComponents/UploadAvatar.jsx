@@ -14,10 +14,7 @@ export default class UploadAvatar extends PureComponent {
           customRequest={this.props.customRequest}
           showUploadList={false}
         >
-          {/* <AvatarAccount dataImagen={this.props.stateImage}/> */}
-          <Avatar style={{ backgroundColor: color, verticalAlign: 'middle' }} size="large">
-            user
-          </Avatar>
+          <AvatarAccount dataImagen={this.props.stateImage} nameUser={(this.props.stateImage === "" ? true : false)} />
           <Button className={Styles.avatar}>
             <Icon type="upload" /><FormattedMessage id="accountSettings.label.upload-image" />
           </Button>

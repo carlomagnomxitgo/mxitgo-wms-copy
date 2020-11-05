@@ -208,7 +208,7 @@ class AccountSettings extends PureComponent {
                                                 <Upload changeImagen={this.handleChange} customRequest={this.dummyRequest} stateImage={avatarUser.urlImage} />
                                                 {localStorage.setItem("url", this.props.avatarUser.urlImage)}
                                             </div>
-                                            : <Upload changeImagen={this.handleChange} customRequest={this.dummyRequest} stateImage={"https://elsignificadode.com/wp-content/uploads/blanco.jpg"} />
+                                            : <Upload changeImagen={this.handleChange} customRequest={this.dummyRequest} stateImage={""} />
 
                                     }
                                 </Col>
