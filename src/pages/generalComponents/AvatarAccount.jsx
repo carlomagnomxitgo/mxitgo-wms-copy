@@ -19,7 +19,7 @@ export default class AvatarAccount extends PureComponent {
                     }}
                     src={this.props.sourceAvatar}
                 >
-                    {/* {this.props.dataImagen} */}
+                    {"U"}
                 </Avatar>
                 {/* :
 
