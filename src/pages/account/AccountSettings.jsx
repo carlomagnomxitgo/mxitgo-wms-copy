@@ -119,29 +119,22 @@ class AccountSettings extends PureComponent {
     }
 
     getBase64 = (img, callback) => {
-        console.log("step 1")
-        const reader = new FileReader();
-        console.log("step 2")
-
-        reader.addEventListener('load', () => callback(reader.result));
         console.log("step 3")
 
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
         reader.readAsDataURL(img);
         console.log("step 4")
 
     }
 
     handleChange = info => {
+        console.log("step 1")
+        console.log(info.file.status)
         if (info.file.status === 'done') {
+            console.log("step 2")
 
-
-
-            this.getBase64(info.file.originFileObj, imageUrl => {
-                localStorage.setItem("url", imageUrl)
-
-                
-                console.log(imageUrl)
-
+            this.getBase64(info.file.originFileObj, imageUrl =>
                 this.props.dispatch({
                     type: 'user/updateValidationAvatar',
                     payload: {
@@ -153,7 +146,6 @@ class AccountSettings extends PureComponent {
                         }
                     },
                 })
-            }
             );
         }
     };
@@ -200,6 +192,7 @@ class AccountSettings extends PureComponent {
                                         avatarUser != undefined
                                             ? <div>
                                                 <Upload changeImagen={this.handleChange} stateImage={avatarUser.urlImage} />
+                                                {localStorage.setItem("url", this.props.avatarUser.urlImage)}
                                             </div>
                                             : <Upload changeImagen={this.handleChange} stateImage={"https://elsignificadode.com/wp-content/uploads/blanco.jpg"} />
 
