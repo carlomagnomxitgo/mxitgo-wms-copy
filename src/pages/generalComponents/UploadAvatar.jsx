@@ -7,6 +7,8 @@ import Styles from './StylesGeneral.css';
 
 export default class UploadAvatar extends PureComponent {
   render() {
+    console.log("UploadAvatar")
+    console.log(this.props)
     return (
       <div>
         <Upload
@@ -16,7 +18,7 @@ export default class UploadAvatar extends PureComponent {
         >
           <AvatarAccount
             // dataImagen={this.props.stateImage}
-            dataImagen={(!this.props.stateImage ? this.props.stateName : this.props.stateImage)}
+            sourceAvatar={(this.props.stateImage === "" ? this.props.stateName : this.props.stateImage)}
           />
           <Button className={Styles.avatar}>
             <Icon type="upload" /><FormattedMessage id="accountSettings.label.upload-image" />
