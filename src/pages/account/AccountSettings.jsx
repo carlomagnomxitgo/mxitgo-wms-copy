@@ -119,20 +119,28 @@ class AccountSettings extends PureComponent {
     }
 
     getBase64 = (img, callback) => {
-        console.log("step 3")
+        console.log("step 4")
 
         const reader = new FileReader();
         reader.addEventListener('load', () => callback(reader.result));
         reader.readAsDataURL(img);
-        console.log("step 4")
+        console.log("step 5")
 
     }
 
     handleChange = info => {
         console.log("step 1")
         console.log(info)
-        if (info.file.status === 'done') {
+
+
+        if (info.file.status === 'uploading') {
             console.log("step 2")
+            console.log(info)
+            // this.setState({ loading: true });
+            return;
+        }
+        if (info.file.status === 'done') {
+            console.log("step 3")
 
             this.getBase64(info.file.originFileObj, imageUrl =>
                 this.props.dispatch({
