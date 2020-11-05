@@ -130,10 +130,13 @@ class AvatarDropdown extends React.Component {
         </Menu.Item>
       </Menu>
     );
+    const userSimplify = userByEmail.split(" ")[0].substr(0, 1) + "" + userByEmail.split(" ")[1].substr(0, 1);
     return userByEmail && userByEmail.name ? (
       <HeaderDropdown overlay={menuHeaderDropdown}>
         <span className={`${styles.action} ${styles.account}`}>
-          <Avatar size="small" className={styles.avatar} src={avatarUser.urlImage} alt="avatar" > {"User"}</Avatar>
+          <Avatar size="small" className={styles.avatar} src={avatarUser.urlImage} alt="avatar" style={{
+            backgroundColor: '#64a9dd',
+          }}> {userSimplify}</Avatar>
           <span className={styles.name}>{userByEmail.name}</span>
         </span>
       </HeaderDropdown>

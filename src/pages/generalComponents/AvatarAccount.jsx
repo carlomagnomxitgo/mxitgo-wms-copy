@@ -15,9 +15,9 @@ export default class AvatarAccount extends PureComponent {
                 <Avatar
                     size={200}
                     style={{
-                        backgroundColor: '#7ec07b',
+                        backgroundColor: '#64a9dd',
                     }}
-                    src={this.props.sourceAvatar}
+                    src={(this.props.sourceAvatar !== "" ? this.props.sourceAvatar : undefined)}
                 >
                     {"U"}
                 </Avatar>
