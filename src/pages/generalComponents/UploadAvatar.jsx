@@ -11,6 +11,7 @@ export default class UploadAvatar extends PureComponent{
       <div>
         <Upload
           onChange={this.props.changeImagen}
+          customRequest={this.props.customRequest}
           showUploadList={false}
         >
           <AvatarAccount dataImagen={this.props.stateImage}/>
