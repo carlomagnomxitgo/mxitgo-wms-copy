@@ -10,15 +10,16 @@ export default class AvatarAccount extends PureComponent {
                     {"user"}
                 </Avatar> */}
                 {/* {this.props.nameUser ? */}
-                    <Avatar
-                        size={200}
-                        style={{
-                            backgroundColor: '#7ec07b',
-                        }}
-                    >
-                        {this.props.dataImagen}
-                    </Avatar>
-                    {/* :
+                <Avatar
+                    size={200}
+                    style={{
+                        backgroundColor: '#7ec07b',
+                    }}
+                    src={<Image src={this.props.dataImagen} />}
+                >
+                    {this.props.dataImagen}
+                </Avatar>
+                {/* :
 
                     <Avatar
                         size={200}
