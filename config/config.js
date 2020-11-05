@@ -140,13 +140,13 @@ export default {
                             path: '/settings',
                             component: './account/AccountSettings'
                         },
-                        {
-                            path: '/admin',
-                            name: 'admin',
-                            icon: 'crown',
-                            component: './Admin',
-                            authority: ['admin'],
-                        },
+                        // {
+                        //     path: '/admin',
+                        //     name: 'admin',
+                        //     icon: 'crown',
+                        //     component: './Admin',
+                        //     authority: ['admin'],
+                        // },
                         {
                             component: './404',
                         },
