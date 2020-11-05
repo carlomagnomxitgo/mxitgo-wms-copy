@@ -119,9 +119,15 @@ class AccountSettings extends PureComponent {
     }
 
     getBase64 = (img, callback) => {
+        console.log("step 1")
         const reader = new FileReader();
+        console.log("step 2")
+
         reader.addEventListener('load', () => callback(reader.result));
+        console.log("step 3")
+
         reader.readAsDataURL(img);
+        console.log("step 4")
 
     }
 
@@ -133,7 +139,7 @@ class AccountSettings extends PureComponent {
             this.getBase64(info.file.originFileObj, imageUrl => {
                 localStorage.setItem("url", imageUrl)
 
-                console.log("this is URL")
+                
                 console.log(imageUrl)
 
                 this.props.dispatch({
