@@ -130,7 +130,7 @@ class AccountSettings extends PureComponent {
 
     handleChange = info => {
         console.log("step 1")
-        console.log(info.file.status)
+        console.log(info)
         if (info.file.status === 'done') {
             console.log("step 2")
 
