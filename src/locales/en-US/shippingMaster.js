@@ -87,6 +87,7 @@ export default {
     'shipping.confirm.phoneMissing': 'You have to add a phone',
     'shipping.drawerEntry.messageSuccessConfirm': 'Confirmed successfully',
     'shipping.drawerEntry.messageSuccessEntry': 'Entry successfully',
-    'shipping.gridModalEntry.captured': 'Captured'
+    'shipping.gridModalEntry.captured': 'Captured',
+    'shipping.drawerConfirm.messageWarningProducts':'You have to add a new center'
 
 };

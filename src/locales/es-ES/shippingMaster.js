@@ -88,7 +88,8 @@ export default {
     'shipping.confirm.phoneMissing': 'Tiene que agregar un telefono',
     'shipping.drawerEntry.messageSuccessConfirm': 'Se confirmó con éxito',
     'shipping.drawerEntry.messageSuccessEntry': 'Entrada exitosa',
-    'shipping.gridModalEntry.captured': 'Capturado'
+    'shipping.gridModalEntry.captured': 'Capturado',
+    'shipping.drawerConfirm.messageWarningProducts':'Tiene que agregar un centro'
 
 
 

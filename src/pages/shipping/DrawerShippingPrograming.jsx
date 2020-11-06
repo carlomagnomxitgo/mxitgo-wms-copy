@@ -77,7 +77,7 @@ class DrawerShippingPrograming extends PureComponent {
             if (err) {
                 return;
             }else if (values["products"]==null){
-                this.props.showMessage('warning', formatMessage({id:'shipping.drawerConfirm.messageWarningCenter'}));
+                this.props.showMessage('warning', formatMessage({id:'shipping.drawerConfirm.messageWarningProducts'}));
             }
             var date = new Date();
             values["createdBy"] = localStorage.getItem('userName');
