@@ -75,6 +75,8 @@ class DrawerShippingPrograming extends PureComponent {
         let _self = this;
         this.props.form.validateFields((err, values) => {
             if (err) {
+                return;
+            }else if (values["products"]==null){
                 this.props.showMessage('warning', formatMessage({id:'shipping.drawerConfirm.messageWarningCenter'}));
             }
             var date = new Date();
