@@ -176,8 +176,8 @@ class TableShippingMaster extends PureComponent {
                   <Divider type="vertical" />
                   <Button type="link" onClick={() => { this.props.showEntry(record["WMS-1-PK"], record.status) }}>
                     {isMobile
-                      ? <Icon type="form" />
-                      : <a><Icon type="form" /> <FormattedMessage id="shipping.label.table-shipping.entry" /></a>
+                      ? <Icon type="eye" />
+                      : <a><Icon type="eye" /> <FormattedMessage id="shipping.label.table-shipping.entry" /></a>
                     }
                   </Button>
                 </a>
@@ -206,8 +206,8 @@ class TableShippingMaster extends PureComponent {
                   <Divider type="vertical" />
                   <Button type="link" onClick={() => { this.props.showEntry(record["WMS-1-PK"], record.status) }}>
                     {isMobile
-                      ? <Icon type="form" />
-                      : <a><Icon type="form" /> <FormattedMessage id="shipping.label.table-shipping.entry" /></a>
+                      ? <Icon type="eye" />
+                      : <a><Icon type="eye" /> <FormattedMessage id="shipping.label.table-shipping.entry" /></a>
                     }
                   </Button>
                 </a>
