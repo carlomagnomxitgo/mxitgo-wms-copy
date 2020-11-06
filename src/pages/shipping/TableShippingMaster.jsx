@@ -11,13 +11,13 @@ import { _ } from 'lodash';
 const { Text } = Typography;
 
 class TableShippingMaster extends PureComponent {
-  formatDate = (mydate) =>{
+  formatDate = (mydate) => {
     return moment(mydate).format('dddd');
   };
-  dates = (planned, confirmed)=>{
-    if(confirmed<planned){
+  dates = (planned, confirmed) => {
+    if (confirmed < planned) {
       return "danger"
-    }else if(confirmed>planned){
+    } else if (confirmed > planned) {
       return "warning"
     }
   }
@@ -60,7 +60,7 @@ class TableShippingMaster extends PureComponent {
         dataIndex: 'PRODUCT-2',
         width: isMobile ? 130 : 100,
         render: (text, record) => (
-        <Text type={this.dates(record.products[2].planned,record.products[2].confirmed)} onClick={() => { this.props.showModalProduct(record,record.products[2].product)}} className={Styles.producto}>{record.products[2].planned}/{record.products[2].confirmed}</Text>
+          <Text type={this.dates(record.products[2].planned, record.products[2].confirmed)} onClick={() => { this.props.showModalProduct(record, record.products[2].product) }} className={Styles.producto}>{record.products[2].planned}/{record.products[2].confirmed}</Text>
         )
       },
       {
@@ -68,7 +68,7 @@ class TableShippingMaster extends PureComponent {
         dataIndex: 'PRODUCT-1',
         width: isMobile ? 110 : 100,
         render: (text, record) => (
-                <Text type={this.dates(record.products[3].planned,record.products[3].confirmed)} onClick={() => { this.props.showModalProduct(record,record.products[3].product)}} className={Styles.producto}>{record.products[3].planned}/{record.products[3].confirmed}</Text>
+          <Text type={this.dates(record.products[3].planned, record.products[3].confirmed)} onClick={() => { this.props.showModalProduct(record, record.products[3].product) }} className={Styles.producto}>{record.products[3].planned}/{record.products[3].confirmed}</Text>
         )
       },
       {
@@ -76,7 +76,7 @@ class TableShippingMaster extends PureComponent {
         dataIndex: 'PRODUCT-3',
         width: isMobile ? 130 : 100,
         render: (text, record) => (
-                <Text type={this.dates(record.products[1].planned,record.products[1].confirmed)} onClick={() => { this.props.showModalProduct(record,record.products[1].product)}} className={Styles.producto}>{record.products[1].planned}/{record.products[1].confirmed}</Text>
+          <Text type={this.dates(record.products[1].planned, record.products[1].confirmed)} onClick={() => { this.props.showModalProduct(record, record.products[1].product) }} className={Styles.producto}>{record.products[1].planned}/{record.products[1].confirmed}</Text>
         )
       },
       {
@@ -84,7 +84,7 @@ class TableShippingMaster extends PureComponent {
         dataIndex: 'PRODUCT-5',
         width: isMobile ? 120 : 100,
         render: (text, record) => (
-                <Text type={this.dates(record.products[4].planned,record.products[4].confirmed)} onClick={() => { this.props.showModalProduct(record,record.products[4].product)}} className={Styles.producto}>{record.products[4].planned}/{record.products[4].confirmed}</Text>
+          <Text type={this.dates(record.products[4].planned, record.products[4].confirmed)} onClick={() => { this.props.showModalProduct(record, record.products[4].product) }} className={Styles.producto}>{record.products[4].planned}/{record.products[4].confirmed}</Text>
         )
       },
       {
@@ -92,7 +92,7 @@ class TableShippingMaster extends PureComponent {
         dataIndex: 'PRODUCT-4',
         width: isMobile ? 120 : 100,
         render: (text, record) => (
-          <Text type={this.dates(record.products[0].planned,record.products[0].confirmed)} onClick={() => { this.props.showModalProduct(record,record.products[0].product)}} className={Styles.producto}>{record.products[0].planned}/{record.products[0].confirmed}</Text>
+          <Text type={this.dates(record.products[0].planned, record.products[0].confirmed)} onClick={() => { this.props.showModalProduct(record, record.products[0].product) }} className={Styles.producto}>{record.products[0].planned}/{record.products[0].confirmed}</Text>
         )
       },
       {
@@ -104,11 +104,11 @@ class TableShippingMaster extends PureComponent {
             {record.status === "NEW"
               ? <FormattedMessage id="shipping.label.table-shipping.status.new" />
               : record.status === "ENTRY"
-                  ?<FormattedMessage id="shipping.label.table-shipping.status.entry" />
-                  : record.status === "CONFIRMED"
-                      ?<FormattedMessage id="shipping.label.table-shipping.status.confirmed" />
-                      : <FormattedMessage id="shipping.label.table-shipping.status.no-status" />
-            } 
+                ? <FormattedMessage id="shipping.label.table-shipping.status.entry" />
+                : record.status === "CONFIRMED"
+                  ? <FormattedMessage id="shipping.label.table-shipping.status.confirmed" />
+                  : <FormattedMessage id="shipping.label.table-shipping.status.no-status" />
+            }
           </span>
         )
       },
@@ -121,96 +121,96 @@ class TableShippingMaster extends PureComponent {
           <a>
             {record.status == "NEW"
               ?
+              <a>
+                <Button type="link" onClick={() => { this.props.showDrawerShipping("EDIT", record) }}>
+                  {isMobile
+                    ? <Icon type="edit" />
+                    : <a><Icon type="edit" /> <FormattedMessage id="shipping.label.table-shipping.edit" /></a>
+                  }
+                </Button>
+                <Divider type="vertical" />
+                <Button type="link" onClick={() => { this.props.showConfirmation("CONF", record) }}>
+                  {isMobile
+                    ? <Icon type="check" />
+                    : <a><Icon type="check" /> <FormattedMessage id="shipping.label.table-shipping.confirm" /></a>
+                  }
+                </Button>
+                <Divider type="vertical" />
+                <Button type="link" onClick={() => { deleteShipping(record["WMS-1-PK"]) }}>
+                  {isMobile
+                    ? <Icon type="delete" />
+                    : <span><Icon type="delete" /><FormattedMessage id="general.table.delete" /></span>
+                  }
+                </Button>
+                <Divider type="vertical" />
+                <Button type="link" disabled={true}>
+                  {isMobile
+                    ? <Icon type="form" />
+                    : <a><Icon type="form" /> <FormattedMessage id="shipping.label.table-shipping.entry" /></a>
+                  }
+                </Button>
+              </a>
+              : record.status == "CONFIRMED"
+                ?
                 <a>
-                  <Button type="link" onClick={() => { this.props.showDrawerShipping("EDIT",record) }}>
+                  <Button type="link" disabled={true}>
                     {isMobile
                       ? <Icon type="edit" />
                       : <a><Icon type="edit" /> <FormattedMessage id="shipping.label.table-shipping.edit" /></a>
                     }
                   </Button>
-                  <Divider type="vertical"/>
-                  <Button type="link" onClick={() =>{this.props.showConfirmation("CONF", record)}}>
+                  <Divider type="vertical" />
+                  <Button type="link" onClick={() => { this.props.showConfirmation("CONF", record) }}>
                     {isMobile
                       ? <Icon type="check" />
-                      : <a><Icon type="check" /> <FormattedMessage id="shipping.label.table-shipping.confirm"/></a>
+                      : <a><Icon type="check" /> <FormattedMessage id="shipping.label.table-shipping.confirm" /></a>
                     }
                   </Button>
-                  <Divider type="vertical"/>
-                  <Button type="link" onClick={()=>{deleteShipping(record["WMS-1-PK"])}}>
-                      {isMobile
-                        ? <Icon type="delete"/>
-                        : <span><Icon type="delete"/><FormattedMessage id="general.table.delete"/></span>
-                      }
-                    </Button>
-                  <Divider type="vertical"/>
+                  <Divider type="vertical" />
                   <Button type="link" disabled={true}>
+                    {isMobile
+                      ? <Icon type="delete" />
+                      : <span><Icon type="delete" /><FormattedMessage id="general.table.delete" /></span>
+                    }
+                  </Button>
+                  <Divider type="vertical" />
+                  <Button type="link" onClick={() => { this.props.showEntry(record["WMS-1-PK"], record.status) }}>
                     {isMobile
                       ? <Icon type="form" />
                       : <a><Icon type="form" /> <FormattedMessage id="shipping.label.table-shipping.entry" /></a>
                     }
                   </Button>
                 </a>
-              : record.status == "CONFIRMED"
-                ?
-                  <a>
-                    <Button type="link" disabled={true}>
-                      {isMobile
-                        ? <Icon type="edit" />
-                        : <a><Icon type="edit" /> <FormattedMessage id="shipping.label.table-shipping.edit" /></a>
-                      }
-                    </Button>
-                    <Divider type="vertical"/>
-                    <Button type="link" onClick={() => { this.props.showConfirmation("CONF", record)}}>
-                      {isMobile
-                        ? <Icon type="check" />
-                        : <a><Icon type="check" /> <FormattedMessage id="shipping.label.table-shipping.confirm"/></a>
-                      }
-                    </Button>
-                    <Divider type="vertical"/>
-                    <Button type="link" disabled={true}>
-                      {isMobile
-                        ? <Icon type="delete"/>
-                        : <span><Icon type="delete"/><FormattedMessage id="general.table.delete"/></span>
-                      }
-                    </Button>
-                    <Divider type="vertical"/>
-                    <Button type="link" onClick={() => {this.props.showEntry(record["WMS-1-PK"], record.status)}}>
-                      {isMobile
-                        ? <Icon type="form" />
-                        : <a><Icon type="form" /> <FormattedMessage id="shipping.label.table-shipping.entry" /></a>
-                      }
-                    </Button>
-                  </a>
                 :
-                  <a>
-                    <Button type="link" disabled={true}>
-                      {isMobile
-                        ? <Icon type="edit" />
-                        : <a><Icon type="edit" /> <FormattedMessage id="shipping.label.table-shipping.edit" /></a>
-                      }
-                    </Button>
-                    <Divider type="vertical"/>
-                    <Button type="link" disabled={true}>
-                      {isMobile
-                        ? <Icon type="check" />
-                        : <a><Icon type="check" /> <FormattedMessage id="shipping.label.table-shipping.confirm"/></a>
-                      }
-                    </Button>
-                    <Divider type="vertical"/>
-                    <Button type="link" disabled={true}>
-                      {isMobile
-                        ? <Icon type="delete"/>
-                        : <span><Icon type="delete"/><FormattedMessage id="general.table.delete"/></span>
-                      }
-                    </Button>
-                    <Divider type="vertical"/>
-                    <Button type="link" onClick={() => {this.props.showEntry(record["WMS-1-PK"], record.status)}}>
-                      {isMobile
-                        ? <Icon type="form" />
-                        : <a><Icon type="form" /> <FormattedMessage id="shipping.label.table-shipping.entry" /></a>
-                      }
-                    </Button>
-                  </a>  
+                <a>
+                  <Button type="link" disabled={true}>
+                    {isMobile
+                      ? <Icon type="edit" />
+                      : <a><Icon type="edit" /> <FormattedMessage id="shipping.label.table-shipping.edit" /></a>
+                    }
+                  </Button>
+                  <Divider type="vertical" />
+                  <Button type="link" disabled={true}>
+                    {isMobile
+                      ? <Icon type="check" />
+                      : <a><Icon type="check" /> <FormattedMessage id="shipping.label.table-shipping.confirm" /></a>
+                    }
+                  </Button>
+                  <Divider type="vertical" />
+                  <Button type="link" disabled={true}>
+                    {isMobile
+                      ? <Icon type="delete" />
+                      : <span><Icon type="delete" /><FormattedMessage id="general.table.delete" /></span>
+                    }
+                  </Button>
+                  <Divider type="vertical" />
+                  <Button type="link" onClick={() => { this.props.showEntry(record["WMS-1-PK"], record.status) }}>
+                    {isMobile
+                      ? <Icon type="form" />
+                      : <a><Icon type="form" /> <FormattedMessage id="shipping.label.table-shipping.entry" /></a>
+                    }
+                  </Button>
+                </a>
             }
           </a>
         ),
@@ -275,7 +275,9 @@ class TableShippingMaster extends PureComponent {
           changedClose={this.props.changedClose}
           showMessageFeatures={this.props.showMessageFeatures}
         />
-        <Table size="small" rowSelection={rowSelection} columns={columns} dataSource={datesTableShipping} scroll={isMobile ? { x: 1300 } : { x: 1350 }} pagination={false} />
+        <Table size="small"
+          // rowSelection={rowSelection}
+          columns={columns} dataSource={datesTableShipping} scroll={isMobile ? { x: 1300 } : { x: 1350 }} pagination={false} />
       </div>
     );
   }
