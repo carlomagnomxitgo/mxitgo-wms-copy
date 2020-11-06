@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { _ } from 'lodash';
-import { Card, Table, Icon, Divider, Button, Spin, Modal, Tab } from 'antd';
+import { Card, Table, Icon, Divider, Button, Spin, Modal, Tabs } from 'antd';
 import { isMobile } from 'react-device-detect';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';

@@ -12,7 +12,7 @@ export default class AvatarAccount extends PureComponent {
 
 
         let styleNoImage = {
-            backgroundColor: '#64a9dd'
+            backgroundColor: '#64a9dd00'
         }
         let styleNoImageColorText = {
             color: "#fff"
@@ -21,7 +21,7 @@ export default class AvatarAccount extends PureComponent {
 
         if (this.props.sourceAvatar !== "") {
             styleNoImage = {
-                backgroundColor: '#64a9dd00'
+                backgroundColor: '#64a9dd'
             }
             // styleNoImageColorText = {
             //   color: "#fff"

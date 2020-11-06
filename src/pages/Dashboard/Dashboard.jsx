@@ -76,26 +76,26 @@ export default class Dashboard extends PureComponent {
   }
 
 
-  componentWillUnmount() {
-    this.props.dispatch({
-      type: 'dashboard/getWeekProgrammingTotalsReset',
-      payload: {
-        // product,
-        // startDate,
-        // Authorization: sessionStorage.getItem('idToken')
-      }
-    });
+  // componentWillUnmount() {
+  //   this.props.dispatch({
+  //     type: 'dashboard/getWeekProgrammingTotalsReset',
+  //     payload: {
+  //       // product,
+  //       // startDate,
+  //       // Authorization: sessionStorage.getItem('idToken')
+  //     }
+  //   });
 
-    this.props.dispatch({
-      type: 'dashboard/dashboardGetMasterTotalReset',
-      payload: {
-        // startDate,
-        // products: this.state.products,
-        // Authorization: sessionStorage.getItem('idToken')
-      }
-    });
+  //   this.props.dispatch({
+  //     type: 'dashboard/dashboardGetMasterTotalReset',
+  //     payload: {
+  //       // startDate,
+  //       // products: this.state.products,
+  //       // Authorization: sessionStorage.getItem('idToken')
+  //     }
+  //   });
 
-  }
+  // }
 
   state = {
     currentSelectedDate: "",
@@ -116,6 +116,24 @@ export default class Dashboard extends PureComponent {
       return;
     }
 
+    console.log("dashboard======")
+    console.log(this.props.dashboard)
+    if (product === "PRODUCT-2" && this.props.dashboard.programmingTotalPRODUCT2 === 0) {
+      notification["info"]({
+        message: "This option is not available",
+        description: "Premium prodcut does not have requirement",
+      });
+      return;
+    }
+
+    if (product === "PRODUCT-1" && this.props.dashboard.programmingTotalPRODUCT1 === 0) {
+      notification["info"]({
+        message: "This option is not available",
+        description: "Gold prodcut does not have requirement",
+      });
+      return;
+    }
+
     startDate = `${startDate}T00:00:00.000Z`;
 
 
@@ -130,8 +148,7 @@ export default class Dashboard extends PureComponent {
     //startDate=`${startDate}T00:00:00.000Z`;
 
 
-    console.log("dashboard======")
-    console.log(this.props.dashboard)
+
 
     for (const i of aDays) {
 
