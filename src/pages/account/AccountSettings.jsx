@@ -211,7 +211,7 @@ class AccountSettings extends PureComponent {
                                             :  */}
 
                                     <div>
-                                        <Upload changeImagen={this.handleChange} customRequest={this.dummyRequest} stateImage={(avatarUser != undefined ? avatarUser.urlImage : "")} stateName={"U"} />
+                                        <Upload changeImagen={this.handleChange} customRequest={this.dummyRequest} stateImage={(avatarUser != undefined ? avatarUser.urlImage : "")} stateName={userByEmail.name.substr(0, 1)} />
                                         {avatarUser != undefined ? localStorage.setItem("url", this.props.avatarUser.urlImage) : ""}
                                     </div>
 

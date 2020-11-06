@@ -131,12 +131,28 @@ class AvatarDropdown extends React.Component {
       </Menu>
     );
     // const userSimplify = userByEmail.name ? (userByEmail.name.split(" ")[0].substr(0, 1) + "" + userByEmail.name.split(" ")[1].substr(0, 1)) : "";
+
+    let styleNoImage = {
+      backgroundColor: '#64a9dd'
+    }
+    let styleNoImageColorText = {
+      color: "#fff"
+    }
+
+
+    if (avatarUser !== undefined) {
+      styleNoImage = {
+        backgroundColor: '#64a9dd00'
+      }
+      // styleNoImageColorText = {
+      //   color: "#fff"
+      // }
+    }
+
     return userByEmail && userByEmail.name ? (
       <HeaderDropdown overlay={menuHeaderDropdown}>
         <span className={`${styles.action} ${styles.account}`}>
-          <Avatar size="small" className={styles.avatar} src={avatarUser.urlImage} alt="avatar" style={{
-            backgroundColor: '#64a9dd',
-          }}> {userByEmail.name.substr(0, 1)}</Avatar>
+          <Avatar size="small" className={styles.avatar} src={avatarUser.urlImage} alt="avatar" style={styleNoImage}> <div style={styleNoImageColorText}>{userByEmail.name.substr(0, 1)}</div></Avatar>
           <span className={styles.name}>{userByEmail.name}</span>
         </span>
       </HeaderDropdown>

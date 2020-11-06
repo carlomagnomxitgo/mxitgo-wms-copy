@@ -6,6 +6,27 @@ export default class AvatarAccount extends PureComponent {
     render() {
         console.log("AvatarAccount")
         console.log(this.props)
+        // const styleNoImage = {
+        //     backgroundColor: '#64a9dd',
+        // }
+
+
+        let styleNoImage = {
+            backgroundColor: '#64a9dd'
+        }
+        let styleNoImageColorText = {
+            color: "#fff"
+        }
+
+
+        if (avatarUser !== undefined) {
+            styleNoImage = {
+                backgroundColor: '#64a9dd00'
+            }
+            // styleNoImageColorText = {
+            //   color: "#fff"
+            // }
+        }
         return (
             <div>
                 {/* <Avatar size={200} src={this.props.dataImagen}>
@@ -14,12 +35,10 @@ export default class AvatarAccount extends PureComponent {
                 {/* {this.props.nameUser ? */}
                 <Avatar
                     size={200}
-                    style={{
-                        backgroundColor: '#64a9dd',
-                    }}
+                    style={styleNoImage}
                     src={(this.props.sourceAvatar !== "" ? this.props.sourceAvatar : undefined)}
                 >
-                    {"U"}
+                    <div style={styleNoImageColorText}>{this.props.sourceAvatar}</div>
                 </Avatar>
                 {/* :
 
