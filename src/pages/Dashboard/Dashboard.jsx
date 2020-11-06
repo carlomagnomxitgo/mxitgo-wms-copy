@@ -52,23 +52,6 @@ export default class Dashboard extends PureComponent {
 
 
 
-    this.props.dispatch({
-      type: 'dashboard/getWeekProgrammingTotalsReset',
-      payload: {
-        // product,
-        // startDate,
-        // Authorization: sessionStorage.getItem('idToken')
-      }
-    });
-
-    this.props.dispatch({
-      type: 'dashboard/dashboardGetMasterTotalReset',
-      payload: {
-        // startDate,
-        // products: this.state.products,
-        // Authorization: sessionStorage.getItem('idToken')
-      }
-    });
 
 
 
@@ -89,6 +72,28 @@ export default class Dashboard extends PureComponent {
 
 
 
+
+  }
+
+
+  componentWillUnmount() {
+    this.props.dispatch({
+      type: 'dashboard/getWeekProgrammingTotalsReset',
+      payload: {
+        // product,
+        // startDate,
+        // Authorization: sessionStorage.getItem('idToken')
+      }
+    });
+
+    this.props.dispatch({
+      type: 'dashboard/dashboardGetMasterTotalReset',
+      payload: {
+        // startDate,
+        // products: this.state.products,
+        // Authorization: sessionStorage.getItem('idToken')
+      }
+    });
 
   }
 
