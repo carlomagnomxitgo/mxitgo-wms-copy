@@ -161,6 +161,9 @@ export default class UsersLayout extends PureComponent {
     }
     render() {
         const { allUsers, loading, saveUser, closeUser, dataUser, updateUser } = this.props;
+
+        console.log("allUsers")
+        console.log(allUsers)
         const columns = [
             {
                 title: formatMessage({ id: 'usersModule.table.name' }),
@@ -252,7 +255,7 @@ export default class UsersLayout extends PureComponent {
                             style={{ width: 240 }}
                             cover={<img alt="userImg" src="/static/MXITGO_LOGO2.b957515c.png" />}
                         >
-                            <Meta title={allUsers[0].nameUser + " " + allUsers[0].familyName} description={allUsers[0].mail} />
+                            <Meta title={"Carlomagno Lopez"} description={"clopez.odas@gmail.com"} />
                         </Card>,
                     </TabPane>
 

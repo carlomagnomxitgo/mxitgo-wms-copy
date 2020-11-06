@@ -19,15 +19,17 @@ export default class AvatarAccount extends PureComponent {
             fontSize: "5rem"
         }
 
-
-        if (this.props.sourceAvatar.indexOf("http") !== -1) {
-            styleNoImage = {
-                backgroundColor: '#64a9dd00'
+        if (this.props.sourceAvatar) {
+            if (this.props.sourceAvatar.indexOf("http") !== -1) {
+                styleNoImage = {
+                    backgroundColor: '#64a9dd00'
+                }
+                // styleNoImageColorText = {
+                //   color: "#fff"
+                // }
             }
-            // styleNoImageColorText = {
-            //   color: "#fff"
-            // }
         }
+
         return (
             <div>
                 {/* <Avatar size={200} src={this.props.dataImagen}>
