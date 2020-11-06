@@ -7,6 +7,7 @@ import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';
 import ModalNewUser from './ModalNewUser';
 import { connect } from 'dva';
 const { TabPane } = Tabs;
+const { Meta } = Card;
 const { confirm } = Modal;
 @connect(({ user, loading }) => ({
     user,
