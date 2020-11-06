@@ -15,7 +15,8 @@ export default class AvatarAccount extends PureComponent {
             backgroundColor: '#64a9dd'
         }
         let styleNoImageColorText = {
-            color: "#fff"
+            color: "#fff",
+            fontSize: "5rem"
         }
 
 
