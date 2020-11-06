@@ -125,7 +125,8 @@ export default class Dashboard extends PureComponent {
     //startDate=`${startDate}T00:00:00.000Z`;
 
 
-
+    console.log("dashboard======")
+    console.log(this.props.dashboard)
 
     for (const i of aDays) {
 
@@ -201,6 +202,9 @@ export default class Dashboard extends PureComponent {
         currentSelectedProduct: value,
         currentSelectedProductDesc: key.props.children
       }, () => {
+
+        console.log("handle product")
+        console.log(value + " " + this.state.customer + " " + this.state.currentSelectedDate)
         this.selectionProduct(value, this.state.customer, this.state.currentSelectedDate);
 
       })
@@ -249,7 +253,7 @@ export default class Dashboard extends PureComponent {
         extra={
           <Form layout="inline" >
             <Form.Item {...formItemLayout} label={formatMessage({ id: "general.calendar.week" })}>
-              <DatePicker format="YYYY-MM-DD" disabledDate={disabledDate} onChange={this.onPickerChange} allowClear={false} value={} />
+              <DatePicker format="YYYY-MM-DD" disabledDate={disabledDate} onChange={this.onPickerChange} allowClear={false} />
             </Form.Item>
 
 
