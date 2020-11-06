@@ -154,6 +154,10 @@ export default class UsersLayout extends PureComponent {
             },
         });
     }
+
+    callback(key) {
+        console.log(key);
+    }
     render() {
         const { allUsers, loading, saveUser, closeUser, dataUser, updateUser } = this.props;
         const columns = [
@@ -216,7 +220,7 @@ export default class UsersLayout extends PureComponent {
             <PageHeaderWrapper>
 
 
-                <Tabs defaultActiveKey="1" onChange={callback}>
+                <Tabs defaultActiveKey="1" onChange={this.callback}>
                     <TabPane tab="Before" key="1">
                         <Card>
                             <Spin tip={formatMessage({ id: "usersModule.loading" })} spinning={loading}>

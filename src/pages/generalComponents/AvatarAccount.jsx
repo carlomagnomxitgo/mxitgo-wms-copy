@@ -12,16 +12,16 @@ export default class AvatarAccount extends PureComponent {
 
 
         let styleNoImage = {
-            backgroundColor: '#64a9dd00'
+            backgroundColor: '#64a9dd'
         }
         let styleNoImageColorText = {
             color: "#fff"
         }
 
 
-        if (this.props.sourceAvatar !== "") {
+        if (this.props.sourceAvatar.indexOf("http") !== -1) {
             styleNoImage = {
-                backgroundColor: '#64a9dd'
+                backgroundColor: '#64a9dd00'
             }
             // styleNoImageColorText = {
             //   color: "#fff"
