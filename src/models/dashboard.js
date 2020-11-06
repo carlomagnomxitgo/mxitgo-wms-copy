@@ -1,4 +1,4 @@
-import { getWeekProgrammingTotals, dashboardGetMasterTotal, getDay } from '../services/api'
+import { getWeekProgrammingTotals, dashboardGetMasterTotal, getWeekProgrammingTotalsReset, dashboardGetMasterTotalReset, getDay } from '../services/api'
 
 export default {
     namespace: 'dashboard',
@@ -76,6 +76,40 @@ export default {
             });
         },
 
+
+
+        * getWeekProgrammingTotalsReset({ payload }, { call, put }) {
+
+
+            // console.log("getWeekProgrammingTotals: " + JSON.stringify(payload));
+
+            // var response = yield call(getWeekProgrammingTotals, payload);
+
+
+            // response.productName = payload.product; /// response.dayName = payload.dayName   
+            // /// response.dayName = "Friday"
+
+
+            // console.log(response);
+            yield put({
+                type: 'getWeekProgrammingTotalsReducerReset',
+                payload: payload,
+            });
+        },
+
+        * dashboardGetMasterTotal({ payload }, { call, put }) {
+
+            console.log("dashboardGetMasterTotal: " + JSON.stringify(payload));
+
+            console.log(JSON.stringify(payload));
+            const response = yield call(dashboardGetMasterTotal, payload);
+            console.log(response);
+            yield put({
+                type: 'dashboardGetMasterTotalReducer',
+                payload: response,
+            });
+        },
+
         * getWeekProgrammingTotals({ payload }, { call, put }) {
 
 
@@ -94,16 +128,16 @@ export default {
                 payload: response,
             });
         },
-        * dashboardGetMasterTotal({ payload }, { call, put }) {
+        * dashboardGetMasterTotalReset({ payload }, { call, put }) {
 
-            console.log("dashboardGetMasterTotal: " + JSON.stringify(payload));
+            // console.log("dashboardGetMasterTotal: " + JSON.stringify(payload));
 
-            console.log(JSON.stringify(payload));
-            const response = yield call(dashboardGetMasterTotal, payload);
-            console.log(response);
+            // console.log(JSON.stringify(payload));
+            // const response = yield call(dashboardGetMasterTotal, payload);
+            // console.log(response);
             yield put({
-                type: 'dashboardGetMasterTotalReducer',
-                payload: response,
+                type: 'dashboardGetMasterTotalReducerReset',
+                payload: payload,
             });
         },
         * getDay({ payload }, { call, put }) {
@@ -124,6 +158,33 @@ export default {
     },
 
     reducers: {
+        getWeekProgrammingTotalsReducerReset(state, action) {
+
+            // console.log("getWeekProgrammingTotalsReducer: " + JSON.stringify(action.payload));
+
+
+
+            // var productTotal = 0;
+
+            // if (action.payload.Items && action.payload.Items.length > 0) {
+
+            //     action.payload.Items[0].dates.forEach((oItem) => { productTotal += oItem.box; })
+
+            // }
+
+            // var oNewState = {
+            //     ...state
+            // };
+
+
+            // oNewState["programmingTotal" + action.payload.productName.replace("-", "")] = productTotal
+
+            return action.payload;
+
+            //// state
+
+        },
+
         getWeekProgrammingTotalsReducer(state, action) {
 
             console.log("getWeekProgrammingTotalsReducer: " + JSON.stringify(action.payload));
@@ -153,6 +214,17 @@ export default {
         dashboardGetMasterTotalReducer(state, action) {
 
             console.log("dashboardGetMasterTotalReducer: " + JSON.stringify(action.payload));
+
+
+
+            return {
+                ...state,
+                programmingTotal: action.payload
+            }
+        },
+        dashboardGetMasterTotalReducerReset(state, action) {
+
+            // console.log("dashboardGetMasterTotalReducer: " + JSON.stringify(action.payload));
 
 
 

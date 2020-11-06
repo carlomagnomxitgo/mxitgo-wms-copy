@@ -19,7 +19,7 @@ export default class AvatarAccount extends PureComponent {
         }
 
 
-        if (avatarUser !== undefined) {
+        if (this.props.sourceAvatar !== "") {
             styleNoImage = {
                 backgroundColor: '#64a9dd00'
             }

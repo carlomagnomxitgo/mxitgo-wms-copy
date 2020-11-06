@@ -133,16 +133,17 @@ class AvatarDropdown extends React.Component {
     // const userSimplify = userByEmail.name ? (userByEmail.name.split(" ")[0].substr(0, 1) + "" + userByEmail.name.split(" ")[1].substr(0, 1)) : "";
 
     let styleNoImage = {
-      backgroundColor: '#64a9dd'
+      backgroundColor: '#64a9dd00'
     }
     let styleNoImageColorText = {
+      // backgroundColor: '#64a9dd',
       color: "#fff"
     }
 
 
     if (avatarUser !== undefined) {
       styleNoImage = {
-        backgroundColor: '#64a9dd00'
+        backgroundColor: '#64a9dd'
       }
       // styleNoImageColorText = {
       //   color: "#fff"
