@@ -249,7 +249,7 @@ export default class Dashboard extends PureComponent {
         spin={this.state.loading}
         content={<div>
           <Spin spinning={this.state.loading}>
-            <Card type="inner" size="small" style={{ textAlign: "center" }} title="dashboard.text.totals">
+            <Card type="inner" size="small" style={{ textAlign: "center" }} title="Totals">
 
               <Row type="flex" justify="center" align-content="center">
                 <Col xs={12} sm={12} md={6} lg={9} xl={9} style={{ textAlign: "center" }}>
