@@ -153,6 +153,20 @@ export default {
                 type: 'getDayReducer',
                 payload: response,
             });
+        },
+        * getDayReset({ payload }, { call, put }) {
+
+            // var response = yield call(getDay, payload);
+
+            // console.log("Day:" + JSON.stringify(payload));
+
+            // response.dayName = payload.dayName;
+
+            console.log(response);
+            yield put({
+                type: 'getDayReset',
+                payload: payload,
+            });
         }
 
     },
@@ -164,7 +178,7 @@ export default {
 
 
 
-            // var productTotal = 0;
+             var productTotal = 0;
 
             // if (action.payload.Items && action.payload.Items.length > 0) {
 
@@ -172,14 +186,14 @@ export default {
 
             // }
 
-            // var oNewState = {
-            //     ...state
-            // };
+             var oNewState = {
+                 ...state
+             };
 
 
-            // oNewState["programmingTotal" + action.payload.productName.replace("-", "")] = productTotal
+             oNewState["programmingTotal" + action.payload.productName.replace("-", "")] = productTotal
 
-            return action.payload;
+            return oNewState;
 
             //// state
 
@@ -261,6 +275,37 @@ export default {
 
 
             };
+
+            return oNewState;
+        },
+        getDayReset(state, action) {
+
+            console.log("getDayReducer:" + JSON.stringify(action.payload));
+
+            var oNewState = {
+                ...state
+
+            };
+
+            // var programmed = action.payload.programmed["pro" + action.payload.dayName];
+            // var confirmed = action.payload.programmedDay.confirmed;
+            // var planned = action.payload.programmedDay.planned;
+            // var cancelled = action.payload.programmedDay.cancelled;
+
+            // var plannedPercentage = (planned / programmed) * 100;
+            // var confirmedPercentage = (confirmed / programmed) * 100;
+
+            // oNewState[action.payload.dayName] = {
+
+            //     programmed,
+            //     planned,
+            //     confirmed,
+            //     cancelled,
+            //     plannedPercentage,
+            //     confirmedPercentage
+
+
+            // };
 
             return oNewState;
         }
