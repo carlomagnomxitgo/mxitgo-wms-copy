@@ -33,16 +33,6 @@ export default {
                 payload: response,
             });
         },
-        * getShippingAllReset({ payload }, { call, put }) {
-            //const response = yield call(fetchShippingAll, payload);
-            console.log(response);
-            console.log(response);
-            console.log(response);
-            yield put({
-                type: 'queryGetShippingAllReset',
-                payload: [],
-            });
-        },
 
         * saveShipping({ payload }, { call, put }) {
             const response = yield call(saveShipping, payload);
@@ -204,12 +194,6 @@ export default {
             // for (let i = 0; i < allDates[0].length; i++) {
             //     newDates.push(allDates[0][i])
             // }
-            return {
-                ...state,
-                datesShipping: action.payload
-            }
-        },
-        queryGetShippingAllReset(state, action){
             return {
                 ...state,
                 datesShipping: action.payload

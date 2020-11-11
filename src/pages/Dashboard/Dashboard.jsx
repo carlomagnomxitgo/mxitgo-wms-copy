@@ -49,6 +49,12 @@ export default class Dashboard extends PureComponent {
 
   componentDidMount() {
 
+
+
+
+
+
+
     this.props.dispatch({
       type: 'programming/fetchProductAll',
       payload: {
@@ -63,23 +69,33 @@ export default class Dashboard extends PureComponent {
       payload: {
       },
     });
+
+
+
+
   }
 
 
-   componentWillUnmount() {
-     this.props.dispatch({
-       type: 'dashboard/getWeekProgrammingTotalsReset',
-       payload: {
-       }
-     });
+  // componentWillUnmount() {
+  //   this.props.dispatch({
+  //     type: 'dashboard/getWeekProgrammingTotalsReset',
+  //     payload: {
+  //       // product,
+  //       // startDate,
+  //       // Authorization: sessionStorage.getItem('idToken')
+  //     }
+  //   });
 
-     this.props.dispatch({
-       type: 'dashboard/dashboardGetMasterTotalReset',
-       payload: {
-       }
-     });
+  //   this.props.dispatch({
+  //     type: 'dashboard/dashboardGetMasterTotalReset',
+  //     payload: {
+  //       // startDate,
+  //       // products: this.state.products,
+  //       // Authorization: sessionStorage.getItem('idToken')
+  //     }
+  //   });
 
-   }
+  // }
 
   state = {
     currentSelectedDate: "",

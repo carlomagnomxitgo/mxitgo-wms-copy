@@ -13,5 +13,5 @@ export default {
   },
   title: 'MXITGO',
   pwa: false,
-  iconfontUrl: '../src/assets/logo.svg',
+  iconfontUrl: '',
 };

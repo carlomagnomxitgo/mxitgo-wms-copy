@@ -93,7 +93,7 @@ export default {
             // console.log(response);
             yield put({
                 type: 'getWeekProgrammingTotalsReducerReset',
-                payload: {},
+                payload: payload,
             });
         },
 
@@ -172,14 +172,14 @@ export default {
 
             // }
 
-             var oNewState = {
-                 ...state
-             };
+            // var oNewState = {
+            //     ...state
+            // };
 
 
             // oNewState["programmingTotal" + action.payload.productName.replace("-", "")] = productTotal
 
-            return oNewState;
+            return action.payload;
 
             //// state
 
