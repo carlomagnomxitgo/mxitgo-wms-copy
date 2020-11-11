@@ -191,8 +191,8 @@ export default {
              };
 
 
-             oNewState["programmingTotal" + action.payload.productName.replace("-", "")] = productTotal
-
+             oNewState["programmingTotalPRODUCT1"] = productTotal
+             oNewState["programmingTotalPRODUCT2"] = productTotal
             return oNewState;
 
             //// state
