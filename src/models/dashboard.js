@@ -287,25 +287,25 @@ export default {
 
             };
 
-            // var programmed = action.payload.programmed["pro" + action.payload.dayName];
-            // var confirmed = action.payload.programmedDay.confirmed;
-            // var planned = action.payload.programmedDay.planned;
-            // var cancelled = action.payload.programmedDay.cancelled;
+             var programmed = 0;
+             var confirmed = 0;
+             var planned = 0;
+             var cancelled = 0;
 
-            // var plannedPercentage = (planned / programmed) * 100;
-            // var confirmedPercentage = (confirmed / programmed) * 100;
+             var plannedPercentage = 0;
+             var confirmedPercentage = 0;
 
-            // oNewState[action.payload.dayName] = {
+             oNewState[action.payload.dayName] = {
 
-            //     programmed,
-            //     planned,
-            //     confirmed,
-            //     cancelled,
-            //     plannedPercentage,
-            //     confirmedPercentage
+                 programmed,
+                 planned,
+                 confirmed,
+                 cancelled,
+                 plannedPercentage,
+                 confirmedPercentage
 
 
-            // };
+             };
 
             return oNewState;
         }
