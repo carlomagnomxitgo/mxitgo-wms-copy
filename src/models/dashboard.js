@@ -164,7 +164,7 @@ export default {
 
             console.log(response);
             yield put({
-                type: 'getDayReset',
+                type: 'getDayReducerReset',
                 payload: payload,
             });
         }
@@ -278,22 +278,22 @@ export default {
 
             return oNewState;
         },
-        getDayReset(state, action) {
+        getDayReducerReset(state, action) {
 
-            console.log("getDayReducer:" + JSON.stringify(action.payload));
+            console.log("getDayReducerRecet:" + JSON.stringify(action.payload));
 
             var oNewState = {
                 ...state
 
             };
 
-             var programmed = 0;
-             var confirmed = 0;
-             var planned = 0;
-             var cancelled = 0;
+             var programmed = "";
+             var confirmed = "";
+             var planned = "";
+             var cancelled = "";
 
-             var plannedPercentage = 0;
-             var confirmedPercentage = 0;
+             var plannedPercentage = "";
+             var confirmedPercentage = "";
 
              oNewState[action.payload.dayName] = {
 

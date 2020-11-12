@@ -87,6 +87,7 @@ export default class Dashboard extends PureComponent {
           Authorization: sessionStorage.getItem('idToken')
        }
      });
+
      var startDate = `2020-11-11T00:00:00.000Z`;
 
 
@@ -101,7 +102,7 @@ export default class Dashboard extends PureComponent {
     //startDate=`${startDate}T00:00:00.000Z`;
     for (const i of aDays) {
      this.props.dispatch({
-      type: 'dashboard/getDayRecet',
+      type: 'dashboard/getDayReset',
       payload: {
         Authorization: sessionStorage.getItem('idToken'),
         dayName: moment(weekStart).add(i, 'days').format("dddd")
