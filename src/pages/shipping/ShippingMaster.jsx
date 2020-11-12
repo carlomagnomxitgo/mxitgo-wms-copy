@@ -89,11 +89,16 @@ class ShippingMaster extends PureComponent {
         })
     }
     componentWillUnmount(){
-        this.props.dispach({
+        this.props.dispatch({
             type: 'shipping/shippingAllRemove',
-            payload:{}
+            payload: {
+                payload: {
+                 Authorization: sessionStorage.getItem('idToken')
+                }
+            },
         })
     }
+    
     onChangeWeek=(date,dateString)=>{
         var since = moment(dateString)
         var until = moment(dateString)
