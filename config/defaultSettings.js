@@ -11,7 +11,7 @@ export default {
   menu: {
     locale: true,
   },
-  title: 'TEST',
+  title: 'MXITGO',
   pwa: false,
-  iconfontUrl: '',
+  iconfontUrl: '../src/assets/favicon.ico',
 };
