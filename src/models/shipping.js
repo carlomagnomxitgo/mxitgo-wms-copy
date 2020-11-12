@@ -33,6 +33,12 @@ export default {
                 payload: response,
             });
         },
+        * shippingAllRemove({payload},{call,put}){
+            yield put({
+                type: 'queryShippingAllRemove',
+                payload: payload
+            });
+        },
 
         * saveShipping({ payload }, { call, put }) {
             const response = yield call(saveShipping, payload);
@@ -197,6 +203,12 @@ export default {
             return {
                 ...state,
                 datesShipping: action.payload
+            }
+        },
+        queryShippingAllRemove(state, action){
+            return  {
+                ...state,
+                datesShipping: []
             }
         },
         saveEntryReducer(state, action) {

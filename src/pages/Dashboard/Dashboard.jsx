@@ -104,7 +104,6 @@ export default class Dashboard extends PureComponent {
       type: 'dashboard/getDayRecet',
       payload: {
         Authorization: sessionStorage.getItem('idToken'),
-        deliveryDate: `${moment(weekStart).add(i, 'days').format("YYYY-MM-DD")}T00:00:00.000Z`,
         dayName: moment(weekStart).add(i, 'days').format("dddd")
       }
     })
