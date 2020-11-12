@@ -54,7 +54,12 @@ export default class OutComming extends PureComponent {
              },
         });
     };
-
+    componentWillUnmount(){
+        this.props.dispatch({
+            type: 'outcomming/outcommingRemove',
+            payload: {}
+        });
+    }
     isEmpty=(str)=>{
         return (!str || 0 === str.length); 
     }

@@ -23,6 +23,12 @@ export default {
                 payload: responseGetOutComming,
             });
         },
+        *outcommingRemove({payload},{call,put}){
+            yield put({
+                type: 'outcommingReducerRemove',
+                payload: payload
+            })
+        },
         * getComposition({ payload }, { call, put }) {
             const response = yield call(getComposition, payload);
             console.log(response);
@@ -83,6 +89,12 @@ export default {
             return {
                 ...state,
                 datesOutcomming: action.payload
+            }
+        },
+        outcommingReducerRemove(state,action){
+            return{
+                ...state,
+                datesOutcomming:[]
             }
         },
         getCompositionReducer(state, action) {
