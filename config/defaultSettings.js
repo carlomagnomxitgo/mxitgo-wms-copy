@@ -11,7 +11,7 @@ export default {
   menu: {
     locale: true,
   },
-  title: 'MXITGO',
+  title: 'TEST',
   pwa: false,
   iconfontUrl: '',
 };
