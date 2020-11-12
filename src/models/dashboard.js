@@ -162,7 +162,6 @@ export default {
 
             // response.dayName = payload.dayName;
 
-            console.log(response);
             yield put({
                 type: 'getDayReducerReset',
                 payload: payload,
