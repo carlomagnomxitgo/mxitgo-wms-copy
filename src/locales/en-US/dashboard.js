@@ -6,7 +6,6 @@ export default {
     'dashboard.title.sunday':'Sunday',
     'dashboard.title.monday':'Monday',
     'dashboard.title.tuesday':'Tuesday',
-    'dashboard.text.total':'Total',
     'dashboard.text.planned':'Planned: ',
     'dashboard.text.confirmed':'Confirmed: ',
     'dashboard.text.canceled':'Canceled: ',
