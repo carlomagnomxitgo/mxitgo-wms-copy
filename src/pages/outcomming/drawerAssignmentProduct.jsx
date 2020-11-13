@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import { _ } from 'lodash';
-import { Drawer, Button, Form, InputNumber, Input } from 'antd';
+import { _ } from 'lodash'; 
+import { Drawer,Button, Form, InputNumber, Input} from 'antd';
 import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';
-import { isMobile } from 'react-device-detect';
+import {isMobile} from 'react-device-detect';
 import { Typography } from 'antd';
 
 const { Text } = Typography;
@@ -11,96 +11,93 @@ export default class DrawerAssignmentProduct extends PureComponent {
     state = {
         pallets: 0,
         box: 0,
+        //isFirstTime: true,
+        // newBoxValue: 0,
         currentValuePallet: 0,
-        currentValueBox: 0,
-        isFirst: true
+        currentValueBox: 0
     }
 
     onChangeQuantityPallet = (e) => {
         let quantityBoxes = this.handleChangePallet();
         this.props.datesProductAll;
-        let remaingQtyPallet = this.state.originalPallets;
-        var remaingQtyBox = this.state.originalBox;
-        var origiBox = this.state.originalBox;
-        var currentValuePallet = e;
-        var currentValueBox = 0;
 
-        if (e === 0) {
+        
+        let remaingQtyPallet = this.state.originalPallets;
+        // var newBoxValue = remaingQtyPallet * quantityBoxes;
+
+        var remaingQtyBox = this.state.originalBox;
+
+        var currentValuePallet = e;
+
+        if (e === "") {
             remaingQtyPallet;
             currentValuePallet = 0;
         } else {
             remaingQtyPallet = remaingQtyPallet - currentValuePallet;
-
+            
             // Box - Updated Value
             remaingQtyBox = remaingQtyBox - (quantityBoxes * currentValuePallet);
-            // currentValueBox = remaingQtyBox + (quantityBoxes * currentValuePallet)
 
-            if(remaingQtyBox < 0){
-                remaingQtyBox = 0;
-            }
+            // newBoxValue = quantityBoxes * currentValuePallet;
+        if (Math.sign(remaingQtyPallet) === -1) {
+            remaingQtyPallet = 0;
+            remaingQtyBox = 0;
+        }
 
-            if(origiBox < (quantityBoxes * currentValuePallet)){
-                currentValueBox = origiBox
-            }else{
-                currentValueBox = (quantityBoxes * currentValuePallet);
-            }
-            
 
-            if (Math.sign(remaingQtyPallet) === -1) {
-                remaingQtyPallet = 0;
-                remaingQtyBox = 0;
-            }
         }
 
         this.setState({
             pallets: remaingQtyPallet,
-            currentValueBox: currentValueBox,
+            currentValueBox: quantityBoxes * currentValuePallet,
             box: remaingQtyBox,
             currentValuePallet: currentValuePallet
         });
     }
-
+    
     onChangeQuantityBox = (e) => {
         var remaingQtyBox = this.state.originalBox;
         let quantityBoxes = this.handleChangePallet();
-        let remaingQtyPallet = this.state.originalPallets;
         var currentValuePallet = this.state.originalPallets;
+
+        var a = currentValuePallet;
 
         var currentValueBox = e;
 
-        if (e === 0) {
+        if (e === "") { 
             remaingQtyBox;
             currentValueBox = 0;
-            currentValuePallet = 0;
+            a = 0;
         } else {
-            currentValuePallet = Math.ceil(currentValueBox / quantityBoxes);
-            remaingQtyPallet = remaingQtyPallet - currentValuePallet;
-            remaingQtyBox = remaingQtyBox - e;
+            currentValuePallet = (remaingQtyBox / quantityBoxes) - currentValueBox;
+            a = (remaingQtyBox / quantityBoxes) - currentValueBox;
+            // remaingQtyBox = remaingQtyBox - (quantityBoxes * currentValuePallet);
+             remaingQtyBox = remaingQtyBox - e;
 
-            if (Math.sign(remaingQtyBox) === -1) {
+             if (Math.sign(remaingQtyBox) === -1) {
                 remaingQtyPallet = 0;
                 remaingQtyBox = 0;
             }
         }
-
+        
         this.setState({
-            pallets: remaingQtyPallet,
             box: remaingQtyBox,
             currentValueBox: currentValueBox,
+            pallets: currentValuePallet,
             currentValuePallet: currentValuePallet
         });
     };
 
     handleChangePallet = () => {
         let currentProduct = this.props.currentOutcomming.product;
-        var filteredItem = this.props.datesProductAll.filter((el) => {
+        var filteredItem = this.props.datesProductAll.filter((el) => { 
             if (el.productName === currentProduct) return el;
         });
         return filteredItem[0].quantityBoxes;
     }
 
     onAccept = (_this) => {
-        let payload = {
+        let payload = { 
             key: "",
             date: "",//"2020-07-16T00:00:00.000Z",
             status: "",//"PENDING",
@@ -118,36 +115,29 @@ export default class DrawerAssignmentProduct extends PureComponent {
         payload.skCustomer = _this.props.currentOutcomming.skCustomer;
         payload.skShipping = _this.props.currentShipping.shipment;
         payload.box = _this.state.currentValueBox;
-        payload.pallet = _this.state.currentValuePallet;
+        payload.pallet = _this.state.currentValuePallet;        
 
         _this.props.postOutcomming(payload);
         _this.props.onClose();
     }
 
-    setCurrentValues = () => {
-        if (this.props.visible) {
-            if (this.state.isFirst) {
-                this.setState({
-                    pallets: this.props.currentShipping.availables_pallets,
-                    box: this.props.currentShipping.availables_boxes,
-                    originalPallets: this.props.currentShipping.availables_pallets,
-                    originalBox: this.props.currentShipping.availables_boxes,
-                    isFirst: false
-                });
-            }
-        } else {
+    setCurrentValues = (pallets, box) => {
+        //if (this.state.isFirstTime && pallets !== undefined) {
             this.setState({
-                currentValuePallet: 0,
-                currentValueBox: 0,
-                isFirst: true
+                pallets,
+                box,
+                originalPallets: pallets,
+                originalBox: box,
+                isFirstTime: false
             });
-        }
+        //}
     }
 
     render() {
+        this.setCurrentValues(this.props.currentShipping.availables_pallets, this.props.currentShipping.availables_boxes);
         const formItemLayout = {
-            labelCol: { xs: { span: 24 }, sm: { span: 8 }, md: { span: 8 }, lg: { span: 8 }, xl: { span: 6 } },
-            wrapperCol: { xs: { span: 24 }, sm: { span: 12 }, md: { span: 12 }, lg: { span: 12 }, xl: { span: 14 } }
+            labelCol: {xs: { span: 24 },sm: { span: 8 },md: { span: 8 },lg: { span: 8 },xl: { span: 6 }},
+            wrapperCol: {xs: { span: 24 },sm: { span: 12 },md: { span: 12 },lg: { span: 12 },xl: { span: 14 }}
         };
         return (
             <Drawer
@@ -155,10 +145,12 @@ export default class DrawerAssignmentProduct extends PureComponent {
                 placement="right"
                 width={isMobile ? "100%" : "50%"}
                 closable={true}
-                onClose={this.props.onClose}
+                onClose={ (e) => { 
+                    this.setState({
+                        isFirstTime: true
+                    })
+                    this.props.onClose(e, this)}}
                 visible={this.props.visible}
-                afterVisibleChange={this.setCurrentValues()}
-                getContainer={isMobile ? false : true}
             >
                 <Form {...formItemLayout} style={{marginTop: "5rem"}}>
                     <Form.Item label={<FormattedMessage id='outComming.drawerAssigment.pallets-availables'/>}>
@@ -168,32 +160,36 @@ export default class DrawerAssignmentProduct extends PureComponent {
                         <Text>{this.state.box}</Text> 
                     </Form.Item>
                     <Form.Item label={<FormattedMessage id='outComming.drawerAssigment.pallets'/>}>
-                        <InputNumber min={0} max={this.state.originalPallets} value={this.state.currentValuePallet} onChange={(e) => {this.onChangeQuantityPallet(e, this)}}/>
+                        <InputNumber min={0} value={this.state.currentValuePallet} onChange={(e) => {this.onChangeQuantityPallet(e, this)}}/>
                     </Form.Item>
                     <Form.Item label={<FormattedMessage id='outComming.drawerAssigment.boxes'/>}>
-                        <InputNumber min={0} max={this.state.originalBox} value={this.state.currentValueBox} onChange={(e) => {this.onChangeQuantityBox(e, this)}}/>
+                        <InputNumber min={0} value={this.state.currentValueBox} onChange={(e) => {this.onChangeQuantityBox(e, this)}}/>
                     </Form.Item>
                     <div
                         style={{
-                            position: 'absolute',
-                            right: 0,
-                            bottom: 0,
-                            width: '100%',
-                            borderTop: '1px solid #e9e9e9',
-                            padding: '10px 16px',
-                            background: '#fff',
-                            textAlign: 'right',
+                        position: 'absolute',
+                        right: 0,
+                        bottom: 0,
+                        width: '100%',
+                        borderTop: '1px solid #e9e9e9',
+                        padding: '10px 16px',
+                        background: '#fff',
+                        textAlign: 'right',
                         }}
                     >
-                        <Button onClick={this.props.onClose} style={{ marginRight: 8 }} type="danger">
-                            <FormattedMessage id="outComming.button.cancel-assignment-outcomming" />
+                        <Button onClick={ (e) => { 
+                    this.setState({
+                        isFirstTime: true
+                    })
+                    this.props.onClose((e, this))}} style={{ marginRight: 8 }} type="danger">
+                            <FormattedMessage id='outComming.drawerAssigment.cancel'/>
                         </Button>
-                        <Button onClick={() => { this.onAccept(this) }} type="primary">
-                            <FormattedMessage id="outComming.button.ok-assignment-outcomming" />
+                        <Button onClick={()=>{this.onAccept(this)}} type="primary">
+                           <FormattedMessage id='outComming.drawerAssigment.accept'/>
                         </Button>
                     </div>
                 </Form>
             </Drawer>
-        );
+        );            
     }
 }

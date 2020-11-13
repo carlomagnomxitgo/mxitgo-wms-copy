@@ -19,8 +19,7 @@ export default {
         datesShipping: [],
         productsAll: [],
         operatorAll: [],
-        disabledLocation: false,
-        disableWarehouse: []
+        disabledLocation: false
     },
     effects: {
 
@@ -60,10 +59,6 @@ export default {
         * saveWarehouse({ payload }, { call, put }) {
             yield put({
                 type: 'saveWarehouseReducer',
-                payload: payload,
-            });
-            yield put({
-                type: 'disabledWarehouseReducer',
                 payload: payload,
             });
         },
@@ -234,8 +229,7 @@ export default {
                 close: false,
                 oShippingItem: { products: [], id: "" },
                 products: [],
-                loading: false,
-                disableWarehouse: []
+                loading: false
             }
         },
         saveShippingReducer(state, action) {
@@ -260,19 +254,6 @@ export default {
                 warehouses: datesWarehouse,
                 products: products,
                 warehouseIds
-            }
-        },
-        disabledWarehouseReducer(state, action) {
-            let getWarehouse = action.payload.locationTreeData.filter(function(data) {
-                for (var i = 0; i < data.childLevel1.length; i++) {
-                    if (data.childLevel1[i].key === action.payload.objWarehouse.warehouseId) {
-                        return data.childLevel1[i].key == action.payload.objWarehouse.warehouseId;
-                    }
-                }
-            })
-            return {
-                ...state,
-                disableWarehouse: getWarehouse
             }
         },
         changedSuccessReducer(state, action) {
@@ -322,21 +303,16 @@ export default {
             var aWarehouse = state.warehouses;
             var products = state.products;
             var warehouse = state.warehouseIds;
-            var warehouseDisable = state.disableWarehouse;
             let pos = aWarehouse.map(function(data) { return data.warehouseId; }).indexOf(action.payload.payload.warehouseId);
             aWarehouse.splice(pos, 1);
             products.splice(pos, 1);
             warehouse.splice(pos, 1);
-            const warehouseIds = [...state.warehouseIds, action.payload.payload.warehouseId];
-            if (aWarehouse.length === 0) {
-                warehouseDisable = [];
-            }
+            const warehouseIds = [...state.warehouseIds, action.payload.payload.warehouseId]
             return {
                 ...state,
                 warehouses: aWarehouse,
                 products: products,
-                warehouseIds: warehouse,
-                disableWarehouse: warehouseDisable
+                warehouseIds: warehouse
             }
         },
         setWarehouseReducer(state, action) {
@@ -347,7 +323,7 @@ export default {
             }
         },
         updateShippingReducer(state, action) {
-            if (action.payload.message === "Success") {
+            if(action.payload.message==="Success"){
                 return {
                     ...state,
                     // datesShipping: action.payload,

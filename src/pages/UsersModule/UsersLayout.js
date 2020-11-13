@@ -19,7 +19,7 @@ const { confirm } = Modal;
     updateUser: user.updateUser
 }))
 export default class UsersLayout extends PureComponent {
-    state = { 
+    state = {
         visible: false,
         edit: false
     };
@@ -42,20 +42,20 @@ export default class UsersLayout extends PureComponent {
         setTimeout(() => {
             this.setState({
                 edit: false,
-            }); 
+            });
         }, 1000);
     }
     componentDidMount() {
         this.props.dispatch({
-           type: 'user/fetchAllUsers',
-           payload: {
-               payload: {
-                   GET:{
-                    Authorization: sessionStorage.getItem('idToken')
-                   }
-               }
-           },
-       });
+            type: 'user/fetchAllUsers',
+            payload: {
+                payload: {
+                    GET: {
+                        Authorization: sessionStorage.getItem('idToken')
+                    }
+                }
+            },
+        });
     }
     saveNewUser = values => {
         this.props.dispatch({
@@ -130,7 +130,7 @@ export default class UsersLayout extends PureComponent {
     }
     deleteModal = (mail, name, familyName) => {
         confirm({
-            title: formatMessage({ id: 'usersModule.modal_deleted.message' }) + ' ' + name +' ' + familyName + ' ?',
+            title: formatMessage({ id: 'usersModule.modal_deleted.message' }) + ' ' + name + ' ' + familyName + ' ?',
             okText: formatMessage({ id: 'usersModule.modal_deleted.yes' }),
             okType: 'danger',
             cancelText: formatMessage({ id: 'usersModule.modal_deleted.no' }),
