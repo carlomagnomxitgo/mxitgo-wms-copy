@@ -35,13 +35,13 @@ class StepDayWeek extends PureComponent {
               <div className={styles.dayDetailContainer}>
                 <div>
                 
-                <FormattedMessage id='dashboard.text.planned'/><b>{dataPerDay.planned}</b>
+                <FormattedMessage id='dashboard.text.planned'/>&nbsp;<b>{dataPerDay.planned}</b>
                 </div>
                 <div>
-                <FormattedMessage id='dashboard.text.confirmed'/><b>{dataPerDay.confirmed}</b>
+                <FormattedMessage id='dashboard.text.confirmed'/>&nbsp;<b>{dataPerDay.confirmed}</b>
                 </div>
                 <div>
-                <FormattedMessage id='dashboard.text.canceled'/><b>{dataPerDay.cancelled}</b>
+                <FormattedMessage id='dashboard.text.canceled'/>&nbsp;<b>{dataPerDay.cancelled}</b>
                 </div>
               </div>
                {/* <Steps.Step {...this.props}
