@@ -166,6 +166,7 @@ class AccountSettings extends PureComponent {
 
 
     render() {
+        console.log("test")
 
         const formItemLayout = {
             labelCol: { xs: { span: 24 }, sm: { span: 8 }, md: { span: 6 }, lg: { span: 8 }, xl: { span: 7 } },
