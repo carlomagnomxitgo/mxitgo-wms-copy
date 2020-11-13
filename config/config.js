@@ -69,9 +69,7 @@ export default {
         ie: 11,
     },
     // umi routes: https://umijs.org/zh/guide/router.html
-    routes: [
-        
-        {
+    routes: [{
             path: '/user',
             component: '../layouts/UserLayout',
             routes: [{
@@ -107,7 +105,7 @@ export default {
                         {
                             path: '/generalProgramming',
                             name: 'Programación General',
-                            icon: 'setting',
+                            icon: 'control',
                             component: './generalProgramming/generalProgramming',
                         },
                         {

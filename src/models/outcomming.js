@@ -1,14 +1,15 @@
-
-import {confirmOutcomming, getComposition, getOutcomming, postOutcomming,getShippingsByEntry, restartOutcomming, getOutcommingsByEntry} from '../services/api';
+import { confirmOutcomming, getComposition, getOutcomming, postOutcomming, getShippingsByEntry, restartOutcomming, getOutcommingsByEntr, fetchProductAll, fetchCustomerAll, getOutcommingsByEntry } from '../services/api';
 
 export default {
     namespace: 'outcomming',
-    state: {        
+    state: {
         compositionData: [],
         datesOutcomming: [],
         shippingsByEntry: [],
         postOutcommingSuccess: false,
         restartOutcommingSuccess: false,
+        datesCustomerAll: [],
+        datesProductAll: [],
     },
     effects: {
         * confirmOutcomming({ payload }, { call, put }) {
@@ -63,15 +64,36 @@ export default {
                 type: 'postOutcommingReducer',
                 payload: responseOutcomming,
             });
+
+            const responseOCvsSH = yield call(getOutcommingsByEntry, payload);
+            console.log(responseOCvsSH);
+            yield put({
+                type: 'getOutcommingsByEntryReducer',
+                payload: responseOCvsSH,
+            });
         },
         * restartOutcomming({ payload }, { call, put }) {
-            const response = yield call(restartOutcomming, payload);
+
+            const response = yield call(restartOutcomming, payload.payload);
             console.log(response);
-            const responseOutcomming = yield call(getOutcomming, payload);
-            //console.log(responseOutcomming);
+
             yield put({
                 type: 'restartOutcommingReducer',
+                payload: response,
+            });
+
+            const responseOutcomming = yield call(getOutcomming, payload.payload);
+            console.log(responseOutcomming);
+            yield put({
+                type: 'getOutcommingReducer',
                 payload: responseOutcomming,
+            });
+
+            const responseOCvsSH = yield call(getOutcommingsByEntry, payload);
+            console.log(responseOCvsSH);
+            yield put({
+                type: 'getOutcommingsByEntryReducer',
+                payload: responseOCvsSH,
             });
         },
         * getOutcommingsByEntry({ payload }, { call, put }) {
@@ -81,20 +103,41 @@ export default {
                 type: 'getOutcommingsByEntryReducer',
                 payload: response,
             });
-        },        
+        },
+        * fetchProductAll({ payload }, { call, put }) {
+            const responseProduct = yield call(fetchProductAll, payload);
+            let typeProduct = responseProduct.Items.filter(function(data) {
+                return data.type == payload.payload.type
+            })
+            yield put({
+                type: 'queryProductAll',
+                payload: typeProduct,
+            });
+            const responseCus = yield call(fetchCustomerAll, payload);
+            yield put({
+                type: 'queryCustomerAll',
+                payload: responseCus,
+            });
+        }
     },
 
     reducers: {
+        queryCustomerAll(state, action) {
+            return {
+                ...state,
+                datesCustomerAll: action.payload.Items
+            }
+        },
+        queryProductAll(state, action) {
+            return {
+                ...state,
+                datesProductAll: action.payload
+            }
+        },
         confirmOutcommingReducer(state, action) {
             return {
                 ...state,
                 datesOutcomming: action.payload
-            }
-        },
-        outcommingReducerRemove(state,action){
-            return{
-                ...state,
-                datesOutcomming:[]
             }
         },
         getCompositionReducer(state, action) {
@@ -119,14 +162,14 @@ export default {
             return {
                 ...state,
                 postOutcommingSuccess: true,
-                datesOutcomming: action.payload
+               // datesOutcomming: []
             }
         },
         restartOutcommingReducer(state, action) {
             return {
                 ...state,
                 restartOutcommingSuccess: true,
-                datesOutcomming: action.payload
+               // datesOutcomming: []
             }
         },
         getOutcommingsByEntryReducer(state, action) {

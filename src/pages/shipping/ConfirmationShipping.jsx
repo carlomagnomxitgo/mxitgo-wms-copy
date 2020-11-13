@@ -66,6 +66,7 @@ class ConfirmationShipping extends PureComponent {
     }
     handleSubmitNewLine = (sLineMode, oState, oWarehouseData) => {
         /// Validate no duplicates for new lines
+        const { locationTreeData } = this.props;
         var bDuplicate = false;
         if (sLineMode === "NEW") {
             var aWarehouse = this.props.warehouses;
@@ -75,6 +76,7 @@ class ConfirmationShipping extends PureComponent {
                 }
             });
         }
+        oWarehouseData["locationTreeData"] = locationTreeData;
         if (!bDuplicate) {
             this.setState(oState);
             if (sLineMode === "NEW") {
@@ -112,11 +114,11 @@ class ConfirmationShipping extends PureComponent {
             let whSelect = whareHouse.filter(function(data) { //-- Add
                 for (var i = 0; i < data.childLevel1.length; i++) {
                     if(Array.isArray(values.warehouses)){
-                        if (data.childLevel1[i].key == values.warehouses[0]) {
+                        if (data.childLevel1[i].key === values.warehouses[0]) {
                             return data;
                         }
                     }else{
-                        if (data.childLevel1[i].key == values.warehouses) {
+                        if (data.childLevel1[i].key === values.warehouses) {
                             return data;
                         }
                     }
@@ -124,17 +126,17 @@ class ConfirmationShipping extends PureComponent {
             })
             values["warehousesSelect"] = whSelect;
             
-            if (this.props.warehouseIds.length == 0) {
+            if (this.props.warehouseIds.length === 0) {
                 message.warning(<FormattedMessage id='shipping.drawerEntry.messageWarningCenter'/>); //I18N *****************************************************************************************************
                 return;
             }
-            if(this.props.masterMode == "NEW"){
+            if(this.props.masterMode === "NEW"){
             values["idShipping"] = this.state.idShipping + date.getDate() + (date.getMonth() + 1) + date.getFullYear() + date.getHours() + date.getMinutes();
             }else{
             values["idShipping"] = this.props.oShippingItem.idShipping;
-            values["deliveryDate"] == "" ? values["deliveryDate"] = this.props.oShippingItem.originalDeliveryDate : values["deliveryDate"]; 
-            values["departureDate"] == "" ? values["departureDate"] = this.props.oShippingItem.originalDepartureDate : values["departureDate"]; 
-            values["entryDate"] == "" ? values["entryDate"] = this.props.oShippingItem.originalEntryDate : values["entryDate"]; 
+            values["deliveryDate"] === "" ? values["deliveryDate"] = this.props.oShippingItem.originalDeliveryDate : values["deliveryDate"]; 
+            values["departureDate"] === "" ? values["departureDate"] = this.props.oShippingItem.originalDepartureDate : values["departureDate"]; 
+            values["entryDate"] === "" ? values["entryDate"] = this.props.oShippingItem.originalEntryDate : values["entryDate"]; 
         }
             _self.props.confirmShipping(values);
             this.props.form.resetFields();
@@ -149,7 +151,7 @@ class ConfirmationShipping extends PureComponent {
             wrapperCol: {xs: { span: 24 },sm: { span: 12 },md: { span: 14 },lg: { span: 14 },xl: { span: 14  }}
         };
         const { getFieldDecorator } = this.props.form;
-        const { oShippingItem, operatorAll, warehouses, masterMode, isSuccess, close} = this.props;
+        const { oShippingItem, operatorAll, warehouses, masterMode, close,isSuccess, disableWarehouse } = this.props;
         const { phoneOperator }= this.state;
         let currentLoader = this.props.loading === undefined ? false : this.props.loading;
         this.setState({ currentLoader });
@@ -173,6 +175,7 @@ class ConfirmationShipping extends PureComponent {
                     masterMode={masterMode}
                     warehouses={warehouses}
                     oShippingItem={oShippingItem}
+                    disableWarehouse={disableWarehouse}
                     locationTreeData={this.props.locationTreeData}
                     wrappedComponentRef={this.saveFormRefNewLine}
                     handleSubmitNewLine={this.handleSubmitNewLine}
@@ -199,31 +202,31 @@ class ConfirmationShipping extends PureComponent {
                                     <Form.Item label={formatMessage({ id: 'shipping.drawershipping.label.date-exit' })}>
                                         {getFieldDecorator('departureDate',
                                             { initialValue: moment(oShippingItem.departureDate, "YYYY-MM-DD"), rules: [{ required: true, message: <FormattedMessage id='shipping.drawerEntry.dateMissing'/> }] })
-                                            (<DatePicker style={{ width: '100%' }} onChange={this.onDepartureDate} disabled={oShippingItem.Operator == "" ? false : true}/>)}
+                                            (<DatePicker style={{ width: '100%' }} onChange={this.onDepartureDate} disabled={oShippingItem.Operator === "" ? false : true}/>)}
                                     </Form.Item>
                                 </Col>
                                 <Col lg={12} xl={12}>
                                     <Form.Item label={formatMessage({ id: 'shipping.drawershipping.label.date-arrival' })}>
                                         {getFieldDecorator('deliveryDate',
                                             { initialValue: moment(oShippingItem.deliveryDate, "YYYY-MM-DD"), rules: [{ required: true, message: <FormattedMessage id='shipping.drawerEntry.dateMissing'/> }] })
-                                            (<DatePicker style={{ width: '100%' }} onChange={this.onDeliveryDate} disabled={oShippingItem.Operator == "" ? false : true}/>)}
+                                            (<DatePicker style={{ width: '100%' }} onChange={this.onDeliveryDate} disabled={oShippingItem.Operator === "" ? false : true}/>)}
                                     </Form.Item>
                                 </Col>
                                 <Col lg={12} xl={12}>
                                     <Form.Item label={formatMessage({ id: 'shipping.drawershipping.label.date-entry' })}>
                                         {getFieldDecorator('entryDate',
                                             { initialValue: moment(oShippingItem.entryDate, "YYYY-MM-DD"), rules: [{ required: true, message: <FormattedMessage id='shipping.drawerEntry.dateMissing'/> }] })
-                                            (<DatePicker style={{ width: '100%' }} onChange={this.onEntryDate} disabled={oShippingItem.Operator == "" ? false : true}/>)}
+                                            (<DatePicker style={{ width: '100%' }} onChange={this.onEntryDate} disabled={oShippingItem.Operator === "" ? false : true}/>)}
                                     </Form.Item>
                                 </Col>
                                 <Col lg={12} xl={12}>
                                     <Form.Item label={formatMessage({ id: 'shipping.drawershipping.label.date-comments' })}>
-                                        {getFieldDecorator('comment',{ initialValue: oShippingItem.comments != undefined ? oShippingItem.comments[0].comment : ""})(<TextArea disabled={oShippingItem.Operator == "" ? false : true}/>)}
+                                        {getFieldDecorator('comment',{ initialValue: oShippingItem.comments != undefined ? oShippingItem.comments[0].comment : ""})(<TextArea disabled={oShippingItem.Operator === "" ? false : true}/>)}
                                     </Form.Item>
                                 </Col>
                             </Row>
                             <Divider />
-                            { oShippingItem.Operator == "" &&
+                            { oShippingItem.Operator === "" &&
                                 <Row type="flex" justify="center" >
                                     <Col span={19} className={Styles.adddrawerone}>
                                         <Button type="primary" shape="circle" size="large" onClick={() => {this.props.showNewLineConfirm("NEW",{},"CONF")}}> 
@@ -240,22 +243,22 @@ class ConfirmationShipping extends PureComponent {
                             <Row className={Styles.lastcolumn}>
                                 <Col lg={12} xl={12}>
                                     <Form.Item label={formatMessage({ id: 'shipping.shippingconfirmation.driver' })}>
-                                    {getFieldDecorator('operator',{ initialValue: oShippingItem.Operator == "" ? "" : oShippingItem.Operator, rules: [{ required: true, message: <FormattedMessage id='shipping.confirm.operatorMissing'/> }]}) 
+                                    {getFieldDecorator('operator',{ initialValue: oShippingItem.Operator === "" ? "" : oShippingItem.Operator, rules: [{ required: true, message: <FormattedMessage id='shipping.confirm.operatorMissing'/> }]}) 
                                         (<AutoComplete
                                             dataSource={this.nameOperatorSelect(operatorAll)}
                                             filterOption={(inputValue, option) =>
                                                 option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                             }
                                             onSelect={this.onSelect}
-                                            disabled={oShippingItem.Operator == "" ? false : true}
+                                            disabled={oShippingItem.Operator === "" ? false : true}
                                         />)}
                                     </Form.Item>
                                 </Col>
                                 <Col lg={12} xl={12}>
                                     <Form.Item label={formatMessage({ id: 'shipping.shippingconfirmation.phone' })}>
                                     {getFieldDecorator('phone',
-                                    { initialValue: oShippingItem.phoneOperator == undefined ? phoneOperator : oShippingItem.phoneOperator})
-                                        (<Input disabled={oShippingItem.Operator == "" ? false : true}/>
+                                    { initialValue: oShippingItem.phoneOperator === undefined ? phoneOperator : oShippingItem.phoneOperator})
+                                        (<Input disabled={oShippingItem.Operator === "" ? false : true}/>
                                     )}
                                     </Form.Item>
                                 </Col>

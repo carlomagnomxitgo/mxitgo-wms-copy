@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import { _ } from 'lodash'; 
+import { _ } from 'lodash';
 import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';
 import { Table } from 'antd';
 import DrawerAssignment from './drawerAssignmentProduct';
-import {isMobile} from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 
 export default class TableAssignment extends PureComponent {
   state ={

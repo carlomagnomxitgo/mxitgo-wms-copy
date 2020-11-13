@@ -47,6 +47,7 @@ export default class TableOutComming extends PureComponent {
             {
                 title: '',
                 dataIndex: 'date',
+                key:'date',
                 width: isMobile ? 100 : 130
             },
             {
