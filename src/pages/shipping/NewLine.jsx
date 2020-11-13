@@ -20,8 +20,7 @@ const NewLine = Form.create()(
             this.props.newLineSelect(selectedKeys);
         }
         renderTreeNode = (treeData) => {
-            const { disableWarehouse, masterMode, warehouses, locationTreeData ,whName} = this.props;
-
+            const { disableWarehouse, masterMode, warehouses, locationTreeData } = this.props;
             
             var disable = disableWarehouse;
             if(masterMode === "EDIT" && warehouses.length != 0){
