@@ -107,7 +107,7 @@ export default {
                         {
                             path: '/generalProgramming',
                             name: 'Programación General',
-                            icon: 'setting',
+                            icon: 'control',
                             component: './generalProgramming/generalProgramming',
                         },
                         {
