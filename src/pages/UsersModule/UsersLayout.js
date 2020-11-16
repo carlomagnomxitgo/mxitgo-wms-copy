@@ -224,31 +224,31 @@ export default class UsersLayout extends PureComponent {
             <PageHeaderWrapper>
 
 
-                <Tabs defaultActiveKey="1" onChange={this.callback}>
-                    <TabPane tab="Before" key="1">
-                        <Card>
-                            <Spin tip={formatMessage({ id: "usersModule.loading" })} spinning={loading}>
-                                <ModalNewUser
-                                    visible={this.state.visible}
-                                    cancel={this.handleCancel}
-                                    loading={loading}
-                                    saveNewUser={this.saveNewUser}
-                                    saveUser={saveUser}
-                                    closeUser={closeUser}
-                                    changedSuccess={this.changedSuccess}
-                                    changedClosed={this.changedClosed}
-                                    edit={this.state.edit}
-                                    dataUser={dataUser}
-                                    updateNewUser={this.updateNewUser}
-                                    updateUser={updateUser}
-                                />
-                                <div align="right">
-                                    <Button type="primary" shape="circle" size="large" onClick={this.showModal}><Icon type="plus" /></Button>
-                                </div>
-                                <Table style={{ marginTop: "1rem" }} size="small" columns={columns} dataSource={allUsers} scroll={isMobile ? { x: 960, y: 400 } : { x: 900, y: 185 }} pagination={false} />
-                            </Spin>
-                        </Card>
-                    </TabPane>
+                {/* <Tabs defaultActiveKey="1" onChange={this.callback}>
+                    <TabPane tab="Before" key="1"> */}
+                <Card>
+                    <Spin tip={formatMessage({ id: "usersModule.loading" })} spinning={loading}>
+                        <ModalNewUser
+                            visible={this.state.visible}
+                            cancel={this.handleCancel}
+                            loading={loading}
+                            saveNewUser={this.saveNewUser}
+                            saveUser={saveUser}
+                            closeUser={closeUser}
+                            changedSuccess={this.changedSuccess}
+                            changedClosed={this.changedClosed}
+                            edit={this.state.edit}
+                            dataUser={dataUser}
+                            updateNewUser={this.updateNewUser}
+                            updateUser={updateUser}
+                        />
+                        <div align="right">
+                            <Button type="primary" shape="circle" size="large" onClick={this.showModal}><Icon type="plus" /></Button>
+                        </div>
+                        <Table style={{ marginTop: "1rem" }} size="small" columns={columns} dataSource={allUsers} scroll={isMobile ? { x: 960, y: 400 } : { x: 900, y: 185 }} pagination={false} />
+                    </Spin>
+                </Card>
+                {/* </TabPane>
                     <TabPane tab="After" key="2">
                         <Card
                             hoverable
@@ -259,7 +259,7 @@ export default class UsersLayout extends PureComponent {
                         </Card>,
                     </TabPane>
 
-                </Tabs>
+                </Tabs> */}
             </PageHeaderWrapper>
         );
     }
