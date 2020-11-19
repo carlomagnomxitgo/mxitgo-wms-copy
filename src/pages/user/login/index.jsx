@@ -85,8 +85,8 @@ class Login extends Component {
     return; 
    }
     var poolData = {
-      UserPoolId : ANT_DESIGN_PRO_USER_POOL_ID, // your user pool id here "us-east-1_3ANmKhLSt"
-      ClientId : ANT_DESIGN_PRO_CLIENT_ID // your app client id here "25h6ahb7sda3lvk1qs8v5u0ol0"
+      UserPoolId : process.env.ANT_DESIGN_PRO_USER_POOL_ID, // your user pool id here "us-east-1_3ANmKhLSt"
+      ClientId : process.env.ANT_DESIGN_PRO_CLIENT_ID // your app client id here "25h6ahb7sda3lvk1qs8v5u0ol0"
     };
     var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
     var userData = {
@@ -117,8 +117,8 @@ class Login extends Component {
     var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
  
     var poolData = {
-      UserPoolId : ANT_DESIGN_PRO_USER_POOL_ID,
-      ClientId : ANT_DESIGN_PRO_CLIENT_ID
+      UserPoolId : process.env.ANT_DESIGN_PRO_USER_POOL_ID,
+      ClientId : process.env.ANT_DESIGN_PRO_CLIENT_ID
     };
     // Create the User Pool Object
     var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
@@ -248,8 +248,8 @@ class Login extends Component {
         var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
      
         var poolData = {
-          UserPoolId : ANT_DESIGN_PRO_USER_POOL_ID,
-          ClientId : ANT_DESIGN_PRO_CLIENT_ID,
+          UserPoolId : process.env.ANT_DESIGN_PRO_USER_POOL_ID,
+          ClientId : process.env.ANT_DESIGN_PRO_CLIENT_ID,
         };
         var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
         var userData = {
@@ -264,7 +264,7 @@ class Login extends Component {
 
 
         var params = {
-        ClientId:  ANT_DESIGN_PRO_CLIENT_ID, // required 
+        ClientId:  process.env.ANT_DESIGN_PRO_CLIENT_ID, // required 
         Username: values.email, // required 
         };
         cognitoidentityserviceprovider.forgotPassword(params, function(err, data) {

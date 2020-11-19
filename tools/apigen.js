@@ -38,7 +38,7 @@ if(sMethod.toUpperCase() == "GET"){
   '\n   ---API Call---  services/api.js\n'  + 
   '     \n'  + 
   '   export async function ' + sAction + '(payload) {  \n'  + 
-  '       return request(`${ANT_DESIGN_PRO_TARGET}'  + sPath +'?payload=${JSON.stringify(payload)}`, {  \n'  + 
+  '       return request(`${process.env.ANT_DESIGN_PRO_TARGET}'  + sPath +'?payload=${JSON.stringify(payload)}`, {  \n'  + 
   '           method: \''  + sMethod.toUpperCase() +'\',  \n'  + 
   '           headers: { \'Authorization\': payload.Authorization }  \n'  + 
   '           \n'  + 
@@ -86,7 +86,7 @@ else{
 '\n   ---API Call---  services/api.js\n'  + 
 '     \n'  + 
 '   export async function ' + sAction + '(payload) {  \n'  + 
-'       return request(`${ANT_DESIGN_PRO_TARGET}'  + sPath +'`, {  \n'  + 
+'       return request(`${process.env.ANT_DESIGN_PRO_TARGET}'  + sPath +'`, {  \n'  + 
 '           method: \''  + sMethod.toUpperCase() +'\',  \n'  + 
 '           headers: { \'Authorization\': payload.Authorization },  \n'  + 
 '           body: JSON.stringify(payload)  \n'  + 
