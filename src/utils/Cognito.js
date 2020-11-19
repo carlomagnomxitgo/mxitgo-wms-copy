@@ -6,8 +6,8 @@ const signUpCognito = (data) => {
     return new Promise((resolve, reject) => {
         var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool; //llamar libreria de cognito, conectar
         var poolData = { //valores desde conigto de aws
-            UserPoolId: process.env.ANT_DESIGN_PRO_USER_POOL_ID,
-            ClientId: process.env.ANT_DESIGN_PRO_CLIENT_ID,
+            UserPoolId: ANT_DESIGN_PRO_USER_POOL_ID,
+            ClientId: ANT_DESIGN_PRO_CLIENT_ID,
         };
         var userPool = new CognitoUserPool(poolData); //genara conexion
         var attributeList = []; //array meter valores de formulario
