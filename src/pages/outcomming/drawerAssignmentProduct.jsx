@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
-import { _ } from 'lodash'; 
-import { Drawer,Button, Form, InputNumber, Input} from 'antd';
+import { _ } from 'lodash';
+import { Drawer, Button, Form, InputNumber, Input } from 'antd';
 import { FormattedMessage, formatMessage } from 'umi-plugin-react/locale';
-import {isMobile} from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 import { Typography } from 'antd';
 
 const { Text } = Typography;
@@ -21,7 +21,7 @@ export default class DrawerAssignmentProduct extends PureComponent {
         let quantityBoxes = this.handleChangePallet();
         this.props.datesProductAll;
 
-        
+
         let remaingQtyPallet = this.state.originalPallets;
         // var newBoxValue = remaingQtyPallet * quantityBoxes;
 
@@ -34,15 +34,15 @@ export default class DrawerAssignmentProduct extends PureComponent {
             currentValuePallet = 0;
         } else {
             remaingQtyPallet = remaingQtyPallet - currentValuePallet;
-            
+
             // Box - Updated Value
             remaingQtyBox = remaingQtyBox - (quantityBoxes * currentValuePallet);
 
             // newBoxValue = quantityBoxes * currentValuePallet;
-        if (Math.sign(remaingQtyPallet) === -1) {
-            remaingQtyPallet = 0;
-            remaingQtyBox = 0;
-        }
+            if (Math.sign(remaingQtyPallet) === -1) {
+                remaingQtyPallet = 0;
+                remaingQtyBox = 0;
+            }
 
 
         }
@@ -54,7 +54,7 @@ export default class DrawerAssignmentProduct extends PureComponent {
             currentValuePallet: currentValuePallet
         });
     }
-    
+
     onChangeQuantityBox = (e) => {
         var remaingQtyBox = this.state.originalBox;
         let quantityBoxes = this.handleChangePallet();
@@ -64,7 +64,7 @@ export default class DrawerAssignmentProduct extends PureComponent {
 
         var currentValueBox = e;
 
-        if (e === "") { 
+        if (e === "") {
             remaingQtyBox;
             currentValueBox = 0;
             a = 0;
@@ -72,14 +72,14 @@ export default class DrawerAssignmentProduct extends PureComponent {
             currentValuePallet = (remaingQtyBox / quantityBoxes) - currentValueBox;
             a = (remaingQtyBox / quantityBoxes) - currentValueBox;
             // remaingQtyBox = remaingQtyBox - (quantityBoxes * currentValuePallet);
-             remaingQtyBox = remaingQtyBox - e;
+            remaingQtyBox = remaingQtyBox - e;
 
-             if (Math.sign(remaingQtyBox) === -1) {
+            if (Math.sign(remaingQtyBox) === -1) {
                 remaingQtyPallet = 0;
                 remaingQtyBox = 0;
             }
         }
-        
+
         this.setState({
             box: remaingQtyBox,
             currentValueBox: currentValueBox,
@@ -90,14 +90,14 @@ export default class DrawerAssignmentProduct extends PureComponent {
 
     handleChangePallet = () => {
         let currentProduct = this.props.currentOutcomming.product;
-        var filteredItem = this.props.datesProductAll.filter((el) => { 
+        var filteredItem = this.props.datesProductAll.filter((el) => {
             if (el.productName === currentProduct) return el;
         });
         return filteredItem[0].quantityBoxes;
     }
 
     onAccept = (_this) => {
-        let payload = { 
+        let payload = {
             key: "",
             date: "",//"2020-07-16T00:00:00.000Z",
             status: "",//"PENDING",
@@ -115,81 +115,85 @@ export default class DrawerAssignmentProduct extends PureComponent {
         payload.skCustomer = _this.props.currentOutcomming.skCustomer;
         payload.skShipping = _this.props.currentShipping.shipment;
         payload.box = _this.state.currentValueBox;
-        payload.pallet = _this.state.currentValuePallet;        
-
+        payload.pallet = _this.state.currentValuePallet;
+        console.log("---> Console.loged 3")
+        console.log(_this)
+        console.log(payload)
         _this.props.postOutcomming(payload);
         _this.props.onClose();
     }
 
     setCurrentValues = (pallets, box) => {
         //if (this.state.isFirstTime && pallets !== undefined) {
-            this.setState({
-                pallets,
-                box,
-                originalPallets: pallets,
-                originalBox: box,
-                isFirstTime: false
-            });
+        this.setState({
+            pallets,
+            box,
+            originalPallets: pallets,
+            originalBox: box,
+            isFirstTime: false
+        });
         //}
     }
 
     render() {
         this.setCurrentValues(this.props.currentShipping.availables_pallets, this.props.currentShipping.availables_boxes);
         const formItemLayout = {
-            labelCol: {xs: { span: 24 },sm: { span: 8 },md: { span: 8 },lg: { span: 8 },xl: { span: 6 }},
-            wrapperCol: {xs: { span: 24 },sm: { span: 12 },md: { span: 12 },lg: { span: 12 },xl: { span: 14 }}
+            labelCol: { xs: { span: 24 }, sm: { span: 8 }, md: { span: 8 }, lg: { span: 8 }, xl: { span: 6 } },
+            wrapperCol: { xs: { span: 24 }, sm: { span: 12 }, md: { span: 12 }, lg: { span: 12 }, xl: { span: 14 } }
         };
         return (
             <Drawer
-                title={<FormattedMessage id='outComming.drawerAssigment.title'/>}
+                title={<FormattedMessage id='outComming.drawerAssigment.title' />}
                 placement="right"
                 width={isMobile ? "100%" : "50%"}
                 closable={true}
-                onClose={ (e) => { 
+                onClose={(e) => {
                     this.setState({
                         isFirstTime: true
                     })
-                    this.props.onClose(e, this)}}
+                    this.props.onClose(e, this)
+                }}
                 visible={this.props.visible}
             >
-                <Form {...formItemLayout} style={{marginTop: "5rem"}}>
-                    <Form.Item label={<FormattedMessage id='outComming.drawerAssigment.pallets-availables'/>}>
+                <Form {...formItemLayout} style={{ marginTop: "5rem" }}>
+                    <Form.Item label={<FormattedMessage id='outComming.drawerAssigment.pallets-availables' />}>
                         <Text>{this.state.pallets}</Text>
                     </Form.Item>
-                    <Form.Item label={<FormattedMessage id='outComming.drawerAssigment.boxes-availables'/>}>
-                        <Text>{this.state.box}</Text> 
+                    <Form.Item label={<FormattedMessage id='outComming.drawerAssigment.boxes-availables' />}>
+                        <Text>{this.state.box}</Text>
                     </Form.Item>
-                    <Form.Item label={<FormattedMessage id='outComming.drawerAssigment.pallets'/>}>
-                        <InputNumber min={0} value={this.state.currentValuePallet} onChange={(e) => {this.onChangeQuantityPallet(e, this)}}/>
+                    <Form.Item label={<FormattedMessage id='outComming.drawerAssigment.pallets' />}>
+                        <InputNumber min={0} value={this.state.currentValuePallet} onChange={(e) => { this.onChangeQuantityPallet(e, this) }} />
                     </Form.Item>
-                    <Form.Item label={<FormattedMessage id='outComming.drawerAssigment.boxes'/>}>
-                        <InputNumber min={0} value={this.state.currentValueBox} onChange={(e) => {this.onChangeQuantityBox(e, this)}}/>
+                    <Form.Item label={<FormattedMessage id='outComming.drawerAssigment.boxes' />}>
+                        <InputNumber min={0} value={this.state.currentValueBox} onChange={(e) => { this.onChangeQuantityBox(e, this) }} />
                     </Form.Item>
                     <div
                         style={{
-                        position: 'absolute',
-                        right: 0,
-                        bottom: 0,
-                        width: '100%',
-                        borderTop: '1px solid #e9e9e9',
-                        padding: '10px 16px',
-                        background: '#fff',
-                        textAlign: 'right',
+                            position: 'absolute',
+                            right: 0,
+                            bottom: 0,
+                            width: '100%',
+                            borderTop: '1px solid #e9e9e9',
+                            padding: '10px 16px',
+                            background: '#fff',
+                            textAlign: 'right',
                         }}
                     >
-                        <Button onClick={ (e) => { 
-                    this.setState({
-                        isFirstTime: true
-                    })
-                    this.props.onClose((e, this))}} style={{ marginRight: 8 }} type="danger">
-                            <FormattedMessage id='outComming.drawerAssigment.cancel'/>
+                        <Button onClick={(e) => {
+                            this.setState({
+                                isFirstTime: true
+                            })
+                            this.props.onClose((e, this))
+                        }} style={{ marginRight: 8 }} type="danger">
+                            <FormattedMessage id='outComming.drawerAssigment.cancel' />
                         </Button>
-                        <Button onClick={()=>{this.onAccept(this)}} type="primary">
-                           <FormattedMessage id='outComming.drawerAssigment.accept'/>
+                        <Button onClick={() => { this.onAccept(this) }} type="primary">
+                            <FormattedMessage id='outComming.drawerAssigment.accept' />
                         </Button>
                     </div>
                 </Form>
             </Drawer>
-        );            
+        );
     }
 }
