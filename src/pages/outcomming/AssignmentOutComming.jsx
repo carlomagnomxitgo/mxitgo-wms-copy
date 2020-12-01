@@ -50,7 +50,7 @@ export default class AssignmentOutComming extends PureComponent {
                             currentOutcomming={this.props.currentOutcomming}
                             visibleAssignProduct={this.props.visibleAssignProduct}
                             setVisibleAssignProduct={this.props.setVisibleAssignProduct}
-                            currentShipping={this.state.currentShipping} 
+                            currentShipping={this.props.currentShipping} 
                             setCurrentShipping={this.props.setCurrentShipping}
                             dataOutcommingsByEntry={dataOutcommingsByEntry}
                         />
