@@ -31,6 +31,7 @@ export default class OutComming extends PureComponent {
         visibleAssign: false, //flag for tableOutcooming
         visibleCompo: false, //flag for tableOutcooming
         visibleAssignProduct: false, //flag for Assign Product
+        currentShipping:{}
     }
     
     componentDidMount() {
@@ -275,6 +276,7 @@ export default class OutComming extends PureComponent {
                                     productDesc={this.state.productDesc} 
                                     productKey={this.state.product} 
                                     visibleAssignProduct={this.state.visibleAssignProduct} 
+                                    currentShipping={this.state.currentShipping} 
                                     setVisibleAssignProduct={this.setVisibleAssignProduct} 
                                     setCurrentShipping={this.setCurrentShipping} 
                                     visibleAssign={this.state.visibleAssign} 

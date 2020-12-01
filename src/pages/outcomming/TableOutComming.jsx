@@ -119,6 +119,7 @@ export default class TableOutComming extends PureComponent {
                         visibleAssignProduct={this.props.visibleAssignProduct} 
                         setVisibleAssignProduct={this.props.setVisibleAssignProduct}
                         setCurrentShipping={this.props.setCurrentShipping}
+                        currentShipping={this.state.currentShipping} 
                         dataOutcommingsByEntry={this.props.dataOutcommingsByEntry}
                 />
                 <CompositionOutComming
@@ -137,6 +138,7 @@ export default class TableOutComming extends PureComponent {
                     visibleAssignProduct={this.props.visibleAssignProduct} 
                     setVisibleAssignProduct={this.props.setVisibleAssignProduct}
                     setCurrentShipping={this.props.setCurrentShipping}
+                    currentShipping={this.state.currentShipping} 
                     dataOutcommingsByEntry={this.props.dataOutcommingsByEntry}
                     getOutcommingByEntry={this.props.getOutcommingByEntry}
                 />
