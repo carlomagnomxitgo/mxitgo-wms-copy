@@ -136,7 +136,14 @@ export default class DrawerAssignmentProduct extends PureComponent {
     }
 
     render() {
-        this.setCurrentValues(this.props.currentShipping.availables_pallets, this.props.currentShipping.availables_boxes);
+        if (this.props.currentShipping) {
+            console.log("exist")
+            this.setCurrentValues(this.props.currentShipping.availables_pallets, this.props.currentShipping.availables_boxes);
+
+        }else{
+            console.log("no exist")
+
+        }
         const formItemLayout = {
             labelCol: { xs: { span: 24 }, sm: { span: 8 }, md: { span: 8 }, lg: { span: 8 }, xl: { span: 6 } },
             wrapperCol: { xs: { span: 24 }, sm: { span: 12 }, md: { span: 12 }, lg: { span: 12 }, xl: { span: 14 } }
