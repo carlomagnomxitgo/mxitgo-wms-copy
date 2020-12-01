@@ -20,6 +20,7 @@ export default class TableAssignment extends PureComponent {
       console.log("---> Console.loged 2")
       console.log(this.state.currentItem)
 
+      this.props.setCurrentShipping(this.state.currentItem);
       this.props.setVisibleAssignProduct(true);
     });
   };
@@ -80,7 +81,8 @@ export default class TableAssignment extends PureComponent {
           visible={this.props.visibleAssignProduct}
           onClose={this.onDrawerAssigProduct}
           currentOutcomming={this.props.currentOutcomming}
-          currentShipping={this.state.currentItem} />
+          // currentShipping={this.state.currentItem} />
+          currentShipping={this.props.currentShipping} />
         <Table
           loading={this.props.loading}
           columns={columns}

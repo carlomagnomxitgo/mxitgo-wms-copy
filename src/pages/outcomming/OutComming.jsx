@@ -239,6 +239,13 @@ export default class OutComming extends PureComponent {
         })
     };
 
+    setCurrentShipping=(value)=>{
+        this.setState({
+            currentShipping: value,
+        })
+    };
+
+
     render() {
         console.log('Context--->', this);  
         console.log(this.props);
@@ -269,6 +276,7 @@ export default class OutComming extends PureComponent {
                                     productKey={this.state.product} 
                                     visibleAssignProduct={this.state.visibleAssignProduct} 
                                     setVisibleAssignProduct={this.setVisibleAssignProduct} 
+                                    setCurrentShipping={this.setCurrentShipping} 
                                     visibleAssign={this.state.visibleAssign} 
                                     setVisibleAssign={this.setVisibleAssign} 
                                     visibleCompo={this.state.visibleCompo} 

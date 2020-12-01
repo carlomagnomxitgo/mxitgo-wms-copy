@@ -118,6 +118,7 @@ export default class TableOutComming extends PureComponent {
                         recordKey= {this.state.recordKey}
                         visibleAssignProduct={this.props.visibleAssignProduct} 
                         setVisibleAssignProduct={this.props.setVisibleAssignProduct}
+                        setCurrentShipping={this.props.setCurrentShipping}
                         dataOutcommingsByEntry={this.props.dataOutcommingsByEntry}
                 />
                 <CompositionOutComming
@@ -135,6 +136,7 @@ export default class TableOutComming extends PureComponent {
                     recordKey= {this.state.recordKey}
                     visibleAssignProduct={this.props.visibleAssignProduct} 
                     setVisibleAssignProduct={this.props.setVisibleAssignProduct}
+                    setCurrentShipping={this.props.setCurrentShipping}
                     dataOutcommingsByEntry={this.props.dataOutcommingsByEntry}
                     getOutcommingByEntry={this.props.getOutcommingByEntry}
                 />

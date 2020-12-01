@@ -68,6 +68,7 @@ export default class CompositionOutComming extends PureComponent {
                     recordKey= {this.props.recordKey}
                     visibleAssignProduct={this.props.visibleAssignProduct} 
                     setVisibleAssignProduct={this.props.setVisibleAssignProduct}
+                    setCurrentShipping={this.props.setCurrentShipping}
                     dataOutcommingsByEntry={this.props.dataOutcommingsByEntry}
                 />
             </div>
